@@ -1,0 +1,301 @@
+<?php 
+$logged		= $this->isCustomerLoggedIn();
+$has_addr	= $this->customerHasAddresses();
+?>
+<div class="onepagecheckout_block">
+    <div class="op_block_title">
+		<?php	echo $this->__('Name & Address');	?>
+    </div>
+    <div class="form_fields">
+    <?php if ($has_addr){ ?>
+        <div class="full">
+            <label for="billing_cutomer_address">
+            	<?php echo $this->__('Select a billing address from your address book or enter a new address.') ?>
+            </label>
+            <div class="data_area">
+                <?php echo $this->getCustomerBillAddr() ?>
+            </div>
+        </div>
+    <?php } ?>
+	    <div id="bill_form"<?php if ($has_addr) {echo ' style="display:none;" ';} ?>>
+			<input type="hidden" name="billing[address_id]" id="billing:address_id" value="<?php echo $this->getBillAddress()->getId() ?>" />
+			<div class="two_fields">
+				<?php echo $this->getLayout()->createBlock('onepagecheckout/widget_name')->setObject($this->getBillAddress())->setFieldIdFormat('billing:%s')->setFieldNameFormat('billing[%s]')->toHtml() ?>
+			</div>
+			<div class='clr'></div>
+			<?php if (!$logged)  : ?>
+				<div class="full">
+					<label for="billing:email" class="required">
+						<?php echo $this->__('Email Address') ?>
+					</label>
+					<sup>*</sup>
+					<div class="data_area">
+						<input type="text" name="billing[email]" value="<?php echo $this->htmlEscape($this->getBillAddress()->getEmail()) ?>" title="<?php echo $this->__('Email Address') ?>" class="t1 validate-email required-entry" />
+					</div>
+				</div>
+			<?php endif;
+			 
+			$cr = Mage::getStoreConfig('onepagecheckout/address_form/company');
+			if ($cr !== 'hidden') : ?>
+				<div class="full">
+					<label for="billing:company" <?php if ( $cr  === 'required' ){ echo 'class="required"'; }?> >
+						<?php echo $this->__('Company') ?>
+					</label>
+					<?php if ($cr  === 'required'){echo "<sup>*</sup'>";}?>
+					<div class="data_area">
+						<input type="text" id="billing:company" name="billing[company]" value="<?php echo $this->htmlEscape($this->getBillAddress()->getCompany()) ?>" title="<?php echo $this->__('Company') ?>" class="t1<?php if($cr === 'required'){ echo ' required-entry';} ?>" />
+					</div>
+				</div>
+			<?php endif; 
+			
+			$ar	= Mage::getStoreConfig('onepagecheckout/address_form/address');
+			if ($ar !== 'hidden') : 
+			?>
+				<div class="full">
+					<label for="billing:street1"<?php if($ar === 'required'){echo ' class="required" ';}?> >
+						<?php echo $this->__('Address') ?>
+					</label>
+					<?php if($ar === 'required'){echo '<sup>*</sup>';}?>
+					<div class="data_area">
+						<input type="text" title="<?php echo $this->__('Street Address') ?>" name="billing[street][]" id="billing:street1" value="<?php echo $this->htmlEscape($this->getBillAddress()->getStreet(1)) ?>" class="t1<?php if($ar === 'required'){echo ' required-entry';}?>" />
+					</div>
+				</div>
+				<?php 
+				$csl	= $this->helper('customer/address')->getStreetLines();
+				for ($i = 2; $i <= $csl; $i++){ 
+				?>
+				<div class="full">
+					<div class="data_area">
+						<input type="text" name="billing[street][]" id="billing:street<?php echo $i?>" title="<?php echo $this->__('Street Address %s', $i) ?>" value="<?php echo $this->htmlEscape($this->getBillAddress()->getStreet($i)) ?>" class="t1" />
+					</div>
+				</div>
+				<?php 
+				}
+				
+			endif;
+
+			$city_r = Mage::getStoreConfig('onepagecheckout/address_form/city');
+			$state_r= Mage::getStoreConfig('onepagecheckout/address_form/state');
+			?>
+			<div class="two_fields"<?php if(($city_r === 'hidden' && $state_r === 'hidden')){echo ' style="display:none"';}?> >
+			<?php if ($city_r !== 'hidden') : ?>
+				<div class="short">
+					<label for="billing:city"<?php if ($city_r === 'required'){ echo ' class="required" ';}?>>
+						<?php echo $this->__('City') ?>
+					</label>
+					<?php if ($city_r === 'required'){ echo ' <sup>*</sup> ';}?>
+					<div class="data_area">
+						<input type="text" title="<?php echo $this->__('City') ?>" name="billing[city]" value="<?php echo $this->htmlEscape($this->getBillAddress()->getCity()) ?>" class="t1<?php if ($city_r === 'required'){ echo ' required-entry ';}?>" id="billing:city" />
+					</div>
+				</div>
+			<?php endif; ?>
+				<div class="short"<?php if($state_r === 'hidden'){ echo ' style="display:none" ';}?>>
+					<label for="billing:region_id"<?php if($state_r === 'required'){ echo ' class="required" ';}?>>
+						<?php echo $this->__('State / Province') ?>
+					</label>
+					<?php if($state_r === 'required'){ echo ' <sup>*</sup> ';}?>
+					<div class="data_area">
+						<select id="billing:region_id" name="billing[region_id]" title="<?php echo $this->__('State/Province') ?>" class="validate-select<?php if($state_r === 'required') { echo ' required-entry';}?>" style="display:none;">
+							<option value=""><?php echo $this->__('Select One') ?></option>
+						</select>
+						<script type="text/javascript">
+						//<![CDATA[
+							$('billing:region_id').setAttribute('defaultValue',  "<?php echo $this->getBillAddress()->getRegionId() ?>");
+						//]]>
+						</script>
+						<input type="text" id="billing:region" name="billing[region]" value="<?php echo $this->htmlEscape($this->getBillAddress()->getRegion()) ?>"  title="<?php echo $this->__('State/Province') ?>" class="t1<?php if($state_r === 'required'){ echo ' required-entry';}?>" style="display:none;" />
+					</div>
+				</div>
+			</div>
+			<div class='clr'></div>  
+			<?php
+			$zip_r	= Mage::getStoreConfig('onepagecheckout/address_form/zip');
+			$phone_r= Mage::getStoreConfig('onepagecheckout/address_form/phone');
+			if ($zip_r !== 'hidden' || $phone_r !== 'hidden') : 
+			?>
+				<div class="two_fields">                
+				<?php if ($zip_r !== 'hidden') : ?>
+					<div class="short">
+						<label for="billing:postcode"<?php if($zip_r === 'required'){echo ' class="required" ';}?>>
+							<?php echo $this->__('Zip Code') ?>
+						</label>
+						<?php if($zip_r === 'required'){echo ' <sup>*</sup>';}?>
+						<div class="data_area">
+							<input type="text" title="<?php echo $this->__('Zip/Postal Code') ?>" name="billing[postcode]" id="billing:postcode" value="<?php echo $this->htmlEscape($this->getBillAddress()->getPostcode()) ?>" class="t1 validate-zip-international<?php if($zip_r === 'required'){echo ' required-entry ';}?>" />
+						</div>
+					</div>
+				<?php endif; ?>
+				<?php if ($phone_r !== 'hidden') : ?>
+					<div class="short">
+						<label for="billing:telephone"<?php if($phone_r === 'required') { echo ' class="required" ';}?>>
+							<?php echo $this->__('Telephone') ?>
+						</label>
+						<?php if($phone_r === 'required') { echo ' <sup>*</sup> ';}?>
+						<div class="data_area">
+							<input type="text" name="billing[telephone]" value="<?php echo $this->htmlEscape($this->getBillAddress()->getTelephone()) ?>" title="<?php echo $this->__('Telephone') ?>" class="t1<?php if($phone_r === 'required') { echo ' required-entry ';}?>" id="billing:telephone" />
+						</div>
+					</div>
+				<?php endif; ?>
+				</div>
+				<div class='clr'></div>
+			<?php endif ?>
+	        
+	        <?php
+	        $country_r = Mage::getStoreConfig('onepagecheckout/address_form/country');  
+	        ?>        
+			<div class="full"<?php if($country_r === 'hidden'){ echo ' style="display:none" ';}?>>
+				<label for="billing:country_id"<?php if($country_r === 'required') { echo ' class="required" ';}?>>
+	        		<?php echo $this->__('Country') ?>
+	        	</label>
+	        	<?php if($country_r === 'required') { echo ' <sup>*</sup> ';}?> 
+				<div class="data_area">
+					<?php echo $this->getBillingCountriesSelectBox() ?>
+				</div>
+			</div>
+	
+			<?php
+			$fax_r	= Mage::getStoreConfig('onepagecheckout/address_form/fax');
+			if ($fax_r !== 'hidden') : 
+			?>
+			<div lang="two_fields">
+				<div class="short">
+					<label for="billing:fax"<?php if($fax_r === 'required') {echo ' class="required" ';}?>>
+						<?php echo $this->__('Fax') ?>
+					</label>
+					<?php if($fax_r === 'required') {echo ' <sup>*</sup> ';}?>
+					<div class="data_area">
+						<input type="text" name="billing[fax]" value="<?php echo $this->htmlEscape($this->getBillAddress()->getFax()) ?>" title="<?php echo $this->__('Fax') ?>" class="t1<?php if($fax_r === 'required') {echo ' required-entry ';}?>" id="billing:fax" />
+					</div>
+				</div>
+			</div>
+			<div class='clr'></div>
+			<?php 
+			endif; 
+	 
+			if (!$logged) :
+			
+				$dob	= $this->getLayout()->createBlock('onepagecheckout/widget_dob');
+				$gender	= $this->getLayout()->createBlock('onepagecheckout/widget_gender');
+				$taxvat = $this->getLayout()->createBlock('onepagecheckout/widget_taxvat');
+
+				if ($dob->isEnabled() || $gender->isEnabled()){ ?>
+					<div class="two_fields">
+						<?php if ($dob->isEnabled()):	?>
+						<div class="short">
+							<?php 
+								echo $dob->setDate($this->getQuote()->getCustomerDob())->setFieldIdFormat('billing:%s')->setFieldNameFormat('billing[%s]')->toHtml(); 
+							?>
+						</div>
+						<?php endif; ?>
+						<?php if ($gender->isEnabled()):	?>
+						<div class="short">
+							<?php 
+								echo $gender->setGender($this->getQuote()->getCustomerGender())->setFieldIdFormat('billing:%s')->setFieldNameFormat('billing[%s]')->toHtml();
+							?>
+						</div>
+						<?php endif ?>
+					</div>
+					<div class='clr'></div>
+				<?php 
+				} 
+
+				if ($taxvat->isEnabled()){	?>
+					<div class='full'>
+						<?php 
+							echo $taxvat->setTaxvat($this->getQuote()->getCustomerTaxvat())->setFieldIdFormat('billing:%s')->setFieldNameFormat('billing[%s]')->toHtml(); 
+						?>
+					</div>
+				<?php 
+				}
+				$agc = Mage::helper('onepagecheckout')->isGuestCheckoutAllowed();
+				if ($agc) 
+				{
+				?>
+				<ul>
+					<li class="options">
+						<input type="checkbox" name="billing[register_account]" value="1" title="<?php echo $this->__('Create an account for later use') ?>" id="billing:register_account" onclick="if(window.billing) billing.setCreateAccount(this.checked);"<?php if ($this->getBillAddress()->getRegisterAccount()):?> checked="checked"<?php endif;?> class="checkbox" />
+						<label for="billing:register_account">
+							<?php echo $this->__('Create an account for later use') ?>
+						</label>
+					</li>
+				</ul>
+				<?php
+				} 
+				else
+				{ 				
+				?>
+					<input type="hidden" name="billing[register_account]" value="1"/>
+				<?php 
+				} 
+				?>
+				<div class="two_fields" id="register-customer-password" <?php if ($agc) { echo ' style="display: none;" '; } ?>>
+					<div class="short">
+						<label for="billing:customer_password" class="required">
+							<?php echo $this->__('Password') ?>
+						</label>
+						<sup>*</sup>
+						<div class="data_area">
+							<input type="password" name="billing[customer_password]" id="billing:customer_password" title="<?php echo $this->__('Password') ?>" class="t1 required-entry validate-password" />
+						</div>
+					</div>
+					<div class="short">
+						<label for="billing:confirm_password" class="required">
+							<?php echo $this->__('Confirm Password') ?>
+						</label>
+						<sup>*</sup>
+						<div class="data_area">
+							<input type="password" name="billing[confirm_password]" title="<?php echo $this->__('Confirm Password') ?>" id="billing:confirm_password" class="t1 required-entry validate-cpassword" />
+						</div>
+					</div>
+					<div class='clr'></div>
+				</div>
+				<div class='clr'></div>
+			<?php 
+			endif; 
+			?>
+			<ul>
+			<?php 
+			if ($logged && $has_addr){
+			?>
+				<li class="options">
+					<input type="checkbox" class="checkbox" name="billing[save_in_address_book]" id="billing:save_in_address_book" value="1" title="<?php echo $this->__('Save in address book') ?>" <?php if ($this->getBillAddress()->getSaveInAddressBook()){ echo ' checked="checked" ';}?> />
+					<label>
+						<?php echo $this->__('Save in address book'); ?>
+					</label>
+				</li>
+			<?php 
+			}
+			else
+			{
+			?>
+				<li class="no-display">
+					<input type="hidden" value="1" name="billing[save_in_address_book]" />
+				</li>
+			<?php 
+			} 
+			?>
+			</ul>
+	    </div>
+    
+    <?php 
+    if (Mage::helper('onepagecheckout')->isShippingAddressAllowed() && $this->canShip()){ 
+    ?>
+    	<input type="hidden" name="billing[use_for_shipping]" id="billing:use_for_shipping" value="<?php echo ($this->isUseBillingAddressForShipping())?'1':'0'; ?>" />
+    <?php 
+    }else{ 
+    ?>
+    	<input type="hidden" name="billing[use_for_shipping]" value="1" />
+    <?php 
+    } 
+    ?>
+	</div>
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+	var billing = new BillingAddress();
+	RegionUpdater.prototype.setMarkDisplay = function(){};
+	ZipUpdater.prototype._setPostcodeOptional = function(){};
+	var billingRegionUpdater = new RegionUpdater('billing:country_id', 'billing:region', 'billing:region_id', countryRegions, undefined, 'billing:postcode');
+//]]>
+</script>

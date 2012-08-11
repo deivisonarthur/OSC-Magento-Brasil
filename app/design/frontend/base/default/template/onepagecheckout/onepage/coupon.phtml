@@ -1,0 +1,60 @@
+<div id="coupon-discount">
+    <div class="discount">
+        <div class="op_block_title"><?php echo $this->__('Discount Codes') ?></div>
+        <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+        <div class="discount-form">
+            <label for="coupon_code"><?php echo $this->__('Enter your coupon code if you have one.') ?></label>
+            <input type="hidden" name="process_coupon" id="process_coupon" value="0" />
+            <input type="hidden" name="coupon[remove]" id="coupon-remove" value="0" />
+            <div class="input-box">
+                <input class="input-text" id="coupon-code" name="coupon[code]" value="<?php echo $this->htmlEscape($this->getCouponCode()) ?>" />
+            </div>
+            <div class="buttons-set">
+                
+                <?php if(strlen($this->getCouponCode())): ?>
+                    &nbsp; <button type="button" title="<?php echo $this->__('Cancel Coupon') ?>" class="button left"  value="<?php echo $this->__('Cancel Coupon') ?>" id="coupon-cancel"><span><span><?php echo $this->__('Cancel Coupon') ?></span></span></button>
+                <?php endif;?>
+                <button type="button" title="<?php echo $this->__('Apply Coupon') ?>" class="button left" value="<?php echo $this->__('Apply Coupon') ?>" id="coupon-apply"><span><span><?php echo $this->__('Apply Coupon') ?></span></span></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+  <script type="text/javascript">
+    //<![CDATA[
+    $('coupon-apply') && $('coupon-apply').observe('click', function(e) {
+   	 	$('process_coupon').value = "1";
+        if (!$('coupon-code').value.length) {
+            $('coupon-code').addClassName('validation-failed');
+            return;
+        }
+        $('coupon-remove').value = "0";
+        checkout.update({
+            'process_coupon': 1,
+            'review': 1
+        });
+    });
+    $('coupon-cancel') && $('coupon-cancel').observe('click', function(e) {
+        $('coupon-remove').value = "1";
+        $('process_coupon').value = "1";
+        checkout.update({
+            'process_coupon': 1,
+            'review': 1
+        });
+    });
+
+ /*
+    $('coupon-code').observe('change', function(e) {
+        if (!$(this).value.length) {
+            $('coupon-remove').value = "1";
+        } else {
+            $('coupon-remove').value = "0";
+        }
+        checkout.update({
+            'process_coupon': 1,
+            'review': 1
+        });
+    });
+   */ 
+    //]]>
+    </script>

@@ -1,0 +1,36 @@
+<?php if (!$_agree = $this->getAgreements()) return; ?>
+<ol class="checkout-agreements">
+<?php $_i = 0; foreach ($_agree as $_a): ?>
+    <li<?php echo ++$_i === count($_agree) ? ' class="last"' : ''?>>
+        <div id="onepagecheckout-agreement-<?php echo $_a->getId() ?>-window"
+            class="agreement-content"
+            style="<?php echo ($_a->getContentHeight() ? 'height:' . $_a->getContentHeight() : '') ?> <?php echo ('minimal' === Mage::getStoreConfig('onepagecheckout/agreements/output')) ? 'display: none' : '' ?>"
+        >
+            <?php if ('minimal' === Mage::getStoreConfig('onepagecheckout/agreements/output')) : ?>
+                <div class="page-title">
+                    <span><?php echo $this->htmlEscape($_a->getName()) ?></span>
+                </div>
+            <?php endif; ?>
+            <?php if ($_a->getIsHtml()):?>
+                <?php echo $_a->getContent() ?>
+            <?php else:?>
+                <?php echo nl2br($this->htmlEscape($_a->getContent())) ?>
+            <?php endif; ?>
+        </div>
+        <p class="agree">
+            <input type="checkbox" id="agreement-<?php echo $_a->getId()?>" name="agreement[<?php echo $_a->getId()?>]" value="1" title="<?php echo $this->htmlEscape($_a->getCheckboxText()) ?>" class="checkbox" />
+            <?php if ('minimal' === Mage::getStoreConfig('onepagecheckout/agreements/output')) : ?>
+                <label for="agreement-<?php echo $_a->getId()?>">
+                    <a href="javascript:void(0)" class="onepagecheckout-agreement-<?php echo $_a->getId() ?>">
+                        <?php echo $this->htmlEscape($_a->getCheckboxText()) ?>
+                    </a>
+                </label>
+            <?php else: ?>
+                <label for="agreement-<?php echo $_a->getId()?>">
+                    <?php echo $this->htmlEscape($_a->getCheckboxText()) ?>
+                </label>
+            <?php endif; ?>
+        </p>
+    </li>
+<?php endforeach ?>
+</ol>

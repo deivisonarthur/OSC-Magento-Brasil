@@ -1,0 +1,34 @@
+<?php echo $this->getChildHtml('items_before'); ?>
+<div id="checkout-review-table-wrapper">
+    <table class="order-products-table" id="checkout-review-table">
+        <col />
+        <col width="1" />
+        <col width="1" />
+        <?php
+        $colspan	= 1; 
+        if ($this->helper('tax')->displayCartBothPrices()):
+        	$colspan	= 2; 
+        ?>
+        <col width="1" />
+        <?php endif; ?>        
+        <thead>
+            <tr>
+                <th><?php echo $this->__('Product Name') ?></th>
+                <th class="a-center"><?php echo $this->__('Qty') ?></th>
+                <th class="a-right" colspan="<?php echo $colspan ?>"><?php echo $this->__('Subtotal') ?></th>
+            </tr>
+        </thead>
+        <?php echo $this->getChildHtml('totals'); ?>
+        <tbody>
+        <?php foreach($this->getItems() as $_item): ?>
+            <?php echo $this->getItemHtml($_item)?>
+        <?php endforeach ?>
+        </tbody>
+    </table>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+    decorateTable('checkout-review-table');
+    truncateOptions();
+//]]>
+</script>

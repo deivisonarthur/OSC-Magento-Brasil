@@ -1,0 +1,48 @@
+<?php if (!Mage::getSingleton('customer/session')->isLoggedIn()){?>
+<div id="onepagecheckout_loginbox" style="display: none;" class='op_login_area'>
+	<div class='close_la' onclick='close_login();'></div>
+    <div class="page-title">
+        <span><?php echo $this->__('Login to your Account') ?></span>
+    </div>
+<?php
+$login_url	= $this->getUrl('*/*/login', array('_secure'=>(!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS']==='on')));
+$http_mode	= (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS']==='on');
+if($http_mode)
+	$login_url	= str_replace('http:', 'https:', $login_url);  
+?>
+    <form method="post" id="login-form" action="<?php echo $login_url ?>">
+        <div class="boxcontent form_fields">
+			<div class='full'>
+				<label>
+					<?php echo $this->__('Email Address') ?>
+				</label>
+				<sup>*</sup>
+				<div class="data_area">
+					<input type="text" name="login[username]" value="<?php echo $this->htmlEscape($this->getUsername()) ?>" id="email" class="input-text required-entry validate-email" title="<?php echo $this->__('Email Address') ?>" />
+				</div>
+			</div>
+			<div class='full'>
+				<label>
+					<?php echo $this->__('Password') ?>
+				</label>
+				<sup>*</sup>
+				<div class="input-box">
+					<input type="password" name="login[password]" class="input-text required-entry validate-password" id="pass" title="<?php echo $this->__('Password') ?>" />
+				</div>
+			</div>
+        </div>
+        <div class="buttons-set">
+            <a href="javascript:void(0);" class="f-left onepagecheckout_forgotlink" onclick='open_forgot();'><?php echo $this->__('Forgot Your Password?') ?></a>
+            <button type="submit" class="button" title="<?php echo $this->__('Login') ?>" name="send" id="send2"><span><span><?php echo $this->__('Login') ?></span></span></button>
+            <span class="please-wait" id="login-please-wait" style="display:none;">
+                <img src="<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif') ?>" class="v-middle" alt=""/>
+            </span>
+        </div>
+    </form>
+    <script type="text/javascript">
+    //<![CDATA[
+        var loginForm = new VarienForm('login-form', true);
+    //]]>
+    </script>
+</div>
+<?php }?>
