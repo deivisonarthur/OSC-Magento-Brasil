@@ -7,6 +7,31 @@
     </modules>
 
     <global>
+
+
+       <resources>
+           <onepagecheckout_setup>
+              <setup>
+                 <module>IWD_OnepageCheckout</module>
+                 <class>Mage_Customer_Model_Entity_Setup</class>
+              </setup>
+              <connection>
+                 <use>core_setup</use>
+              </connection>
+          </onepagecheckout_setup>
+          <onepagecheckout_write>
+            <connection>
+               <use>core_write</use>
+             </connection>
+          </onepagecheckout_write>
+          <onepagecheckout_read>
+            <connection>
+              <use>core_read</use>
+         </connection>
+        </onepagecheckout_read>
+       </resources>
+
+
         <models>
             <onepagecheckout>
                 <class>IWD_OnepageCheckout_Model</class>
@@ -129,13 +154,13 @@
     <default>
         <onepagecheckout>
             <general>
-                <enabled>0</enabled>
-                <title>One Page Checkout</title>
+                <enabled>1</enabled>
+                <title>Finalize sua compra em 1 etapa</title>
                 <!-- 
                 <shipping_method>flatrate_flatrate</shipping_method>
                  -->
-                <payment_method>paypal_express</payment_method>
-                <country>US</country>
+                <payment_method>authorizenet</payment_method>
+                <country>BR</country>
                 <guest_checkout>1</guest_checkout>
                 <shipping_address>1</shipping_address>
                 <newsletter_checkbox>1</newsletter_checkbox>
@@ -148,14 +173,14 @@
                 <city_file>GeoLiteCity.dat</city_file>
             </geo_ip>
             <address_form>
-                <company>hidden</company>
+                <company>required</company>
                 <address>required</address>
                 <city>required</city>
-                <country>optional</country>
+                <country>hidden</country>
                 <zip>required</zip>
                 <state>required</state>
                 <phone>required</phone>
-                <fax>hidden</fax>
+                <fax>required</fax>
             </address_form>
             <agreements>
                 <enabled>0</enabled>

@@ -10,7 +10,12 @@
         </reference>
         <reference name="head">
             <action method="addItem" ifconfig="onepagecheckout/general/enabled"><type>skin_css</type><name>css/onepagecheckout.css</name></action>
+            <action method="addItem" ifconfig="onepagecheckout/general/enabled"><type>skin_js</type><name>deivison/jquery.js</name></action>
+            <action method="addItem" ifconfig="onepagecheckout/general/enabled"><type>skin_js</type><name>deivison/jquery.maskedinput-1.2.2.min.js</name></action>
+            <action method="addItem" ifconfig="onepagecheckout/general/enabled"><type>skin_js</type><name>deivison/deivison.js</name></action>
         </reference>
+
+
         <reference name="content">
             <block type="checkout/onepage" name="onepagecheckout" template="onepagecheckout/onepagecheckout.phtml">
                 <block type="customer/form_login" name="customer.login" template="onepagecheckout/login.phtml"/>

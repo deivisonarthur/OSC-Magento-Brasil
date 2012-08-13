@@ -67,7 +67,7 @@ $comando =  "INSERT INTO `{$tabela_nome}` (`locale`, `region_id`, `name`) VALUES
 ('pt_BR', '". ($id_acre+11) ."', 'Minas Gerais'),
 ('pt_BR', '". ($id_acre+12) ."', 'Para'),
 ('pt_BR', '". ($id_acre+13) ."', 'Paraiba'),
-('pt_BR', '". ($id_acre+14) ."', 'Paraná'),
+('pt_BR', '". ($id_acre+14) ."', 'Parana'),
 ('pt_BR', '". ($id_acre+15) ."', 'Pernambuco'),
 ('pt_BR', '". ($id_acre+16) ."', 'Piaui'),
 ('pt_BR', '". ($id_acre+17) ."', 'Rio de Janeiro'),

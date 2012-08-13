@@ -1,6 +1,6 @@
 <div class="page-title">
     <h1 class='h1_opc'><?php echo Mage::getStoreConfig('onepagecheckout/general/title') ?></h1>
-    Fill in the fields below to complete your purchase!
+    <?php echo $this->__('Fill in the fields below to complete your purchase!') ?>
     <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()){ ?>
     <p class="onepagecheckout_loginarea">
         <a href="javascript:void(0)" class="onepagecheckout_loginlink" onclick='open_login();'>
@@ -94,5 +94,6 @@ $seq_http	= (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS']==='on');
         });
 		opc_window	= new OPC.Window({triggers: win_triggers});
     });
+
 //]]>
 </script>
