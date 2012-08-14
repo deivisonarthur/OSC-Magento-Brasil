@@ -1,64 +1,71 @@
-Cuidado! AtenÁ„o!!!
+M√≥dulo OSC-Magento-Brasil ‚Äì Normatiza√ß√£o do m√≥dulo para o padr√£o brasileiro
 =================
-Por motivo de seguranÁa do seu projeto, recomendamos que se for usar esse mÛdulo, que faÁa o download do mesmo diretamente no Github e n„o peguem arquivos distribuido na web por arquivos zipados! Lembre-se esse arquivos trabalha diretamente pagamentos e com dados sigilosos de seus clientes.
-Dessa forma evita que pessoas mau intencionadas peguem o mÛdulo que È FREE e coloquem scripts para hakear seu projeto!
-Link para download em: https://github.com/deivisonarthur/OSC-Magento-Brasil/zipball/master
+O projeto OCS-MAgento-Brasil √© uma iniciativa para traduzir e adaptar o m√≥dulo free de OSC(One Step Checkout) para Magento chamado IWD OnePageCheckout. O m√≥dulo ir√° traduzir, adicionar estados, formatar, validar campos e adicionar novos campos. Iremos tratar os principais campos, como: Rua, Bairro, Cidade, Estado, Cep com busca por Ajax com busca nos Correios, CPF/CNPJ, IE(Inscri√ß√£o Estadual), tipo pessoa, Telefone, Celular,‚Ä¶
 
-MÛdulo OSC-Magento-Brasil - NormatizaÁ„o do mÛdulo para o padr„o brasileiro
+Oque esse m√≥dulo ir√° fazer?
 =================
-O projeto OCS-MAgento-Brasil È uma iniciativa para traduzir e adaptar o mÛdulo free de OSC(One Step Checkout) para Magento chamado IWD OnePageCheckout.
-O mÛdulo ir· traduzir, adicionar estados, formatar, validar campos e adicionar novos campos.
-Iremos tratar os principais campos, como: Rua, Bairro, Cidade, Estado, Cep com busca por Ajax com busca nos Correios, CPF/CNPJ, IE(InscriÁ„o Estadual), tipo pessoa, Telefone, Celular,...
 
-Oque esse mÛdulo ir· fazer?
-=================
-Com o mÛdulo OSC-Magento-Brasil ir· se ter o meio mais famoso de checkout do Magento conhecido por OSC(One Step Checkout) e iremos fazer outros ajustes, como:
+Com o m√≥dulo OSC-Magento-Brasil ir√° se ter o meio mais famoso de checkout do Magento conhecido por OSC(One Step Checkout) e iremos fazer outros ajustes, como:
 
-* TraduÁ„o dos Campos do formul·rio. (feito!)
-* Inclus„o dos estados brasileiros. (feito!)
-* RemodelaÁ„o do campo endereÁo do magento de 4 linhas. Dividindo e formatando para EndereÁo, N˙mero, Bairro e Cidade. (feito!)
-* UtilizaÁ„o do campo taxvat por padr„o como campo de CPF/CNPJ. (feito!)
-* Busca do endereÁo por ajax direto do site dos Correios. (feito!)
-* FormataÁ„o dos campos por m·scara. Exe: Telefone com 9 ou 8 dÌgitos (99) ?9999-9999. (feito!)
+Tradu√ß√£o dos Campos do formul√°rio. (feito!)
+Inclus√£o dos estados brasileiros. (feito!)
+Remodela√ß√£o do campo endere√ßo do magento de 4 linhas. Dividindo e formatando para Endere√ßo, N√∫mero, Bairro e Cidade. (feito!)
+Utiliza√ß√£o do campo taxvat por padr√£o como campo de CPF/CNPJ. (feito!)
+Busca do endere√ßo por ajax direto do site dos Correios. (feito!)
+Formata√ß√£o dos campos por m√°scara. Exe: Telefone com 9 ou 8 d√≠gitos (99) ?9999-9999. (feito!)
 
 Para segunda etapa irei implementar outros campos, como:
-* Inclus„o do campo tipo pessoa (FÌsica ou JurÌdica)
-* IE(InscriÁ„o Estadual) para gereÁ„o da NFE
-* Inclus„o do campo RG(Identidade)
-* Inclus„o do campo Org„o Emissor do RG
-* OpÁ„o de desligar campos
-* Como chegou a nossa loja virtual?
 
-TambÈm pretendo implementar opÁıes de seguranÁa, como:
-* DetecÁ„o de utilizaÁ„o de proxy com envio de email ao administrador
-* DetecÁ„o de compras suspeitas com envio de email ao administrador (Ir· verificar por GeolocalizaÁ„o local onde foi feito a compra e bater com o local de entrega)
-* IntegraÁ„o com o sistema de detecÁ„o de fraude Maxmind (http://www.maxmind.com)
-veja mais dicas sobre an·lise de risco e fraude no Magento em: http://www.deivison.com.br/blog/2012/07/25/modulo-de-analise-de-risco-e-fraude-no-magento-sem-mensalidade/
+Inclus√£o do campo tipo pessoa (F√≠sica ou Jur√≠dica)
+IE(Inscri√ß√£o Estadual) para gere√ß√£o da NFE
+Inclus√£o do campo RG(Identidade)
+Inclus√£o do campo Org√£o Emissor do RG
+Op√ß√£o de desligar campos
+Como chegou a nossa loja virtual?
 
-Desenvolvedores e mantenedores do projeto MÛdulo OSC-Magento-Brasil:
+Tamb√©m pretendo implementar op√ß√µes de seguran√ßa, como:
+
+Detec√ß√£o de utiliza√ß√£o de proxy com envio de email ao administrador
+Detec√ß√£o de compras suspeitas com envio de email ao administrador (Ir√° verificar por Geolocaliza√ß√£o local onde foi feito a compra e bater com o local de entrega)
+Integra√ß√£o com o sistema de detec√ß√£o de fraude Maxmind (http://www.maxmind.com) veja mais dicas sobre an√°lise de risco e fraude no Magento em: http://www.deivison.com.br/blog/2012/07/25/modulo-de-analise-de-risco-e-fraude-no-magento-sem-mensalidade/
+
+Demostra√ß√£o online do projeto:
 =================
-* Deivison Arthur Lemos Serpa
-http://www.deivison.com.br
-* Denis Colli Spalenza
-http://www.xpdev.com.br
+http://www.deivison.com.br/demos/shop2
 
-Vers„o BETA do projeto
+
+Observa√ß√£o Importante!
 =================
-O mÛdulo ainda encontra-se em fase de desenvolvimento! Ou seja, Ainda em est·gio Beta - v 1.0.0!
+Por motivos de seguran√ßa, recomendamos que fa√ßa sempre o download desse m√≥dulo diretamente no Github. Dessa forma prestigiaram e incentivaram os mantenedores do projeto e ter√£o a garantia de n√£o pegar scripts maliciosos nesse m√≥dulo.
 
-PeÁo por gentileza que n„o copiem o projeto e saem distribuindo zipado pela web! Porque isso?
+Atualmente na web, muitas pessoas mau intencionadas pegam templates e m√≥dulos free, descompactam, inserem scripts maliciosos e redistribuem na web.
+
+Projeto 100% auditado pelos mantenedores no Github!
 =================
-Por v·rios fatores!
 
-1 - Pois fazendo dessa forma automaticamente estar· removendo os mÈritos dos desenvolvedores e respons·veis pelo projeto.
-2 - Pegando o mÛdulo diretamente no GITHUB, estar„o pegando o componente atualizado e certificado que iram pegar os fontes diretamente com os mantenedores do projeto.
-3 - Dessa forma aumentaram a seguranÁa dos seus projetos! Pois existem muitas pessoas mau intencionadas que pegam projetos open source, editam e colocam cÛdigos maliciosos para se infiltrar nos projetos. Por isso recomendamos pegarem mÛdulos diretamente no GITHUB com os mantenedores do projeto!
-
-CrÈditos
+Desenvolvedores e mantenedores do projeto M√≥dulo OSC-Magento-Brasil:
 =================
-* Projeto base de OSC utilizado:
-http://www.interiorwebdesign.com/magento/magento-one-step-checkout-module.html
-* Script base para implementaÁ„o da busca do CEP por Ajax:
-http://www.pinceladasdaweb.com.br/blog/2012/01/31/webservice-consulta-de-cep-diretamente-ao-site-dos-correios/
-* TraduÁıes pt-BR do Magento:
-http://www.cerebrum.com.br/index.php/magento-portugues-download-traducao-brasil-cielo-redecard-american-express.html
+Deivison Arthur Lemos Serpa http://www.deivison.com.br
+Denis Colli Spalenza http://www.xpdev.com.br
+
+Vers√£o do projeto:
+=================
+O m√≥dulo ainda encontra-se em fase de desenvolvimento! Ou seja, Est√°gio Beta ‚Äì v 1.0.0 para realiza√ß√£o de testes e corre√ß√µes!
+
+Cr√©ditos:
+=================
+Projeto base de OSC utilizado: http://www.interiorwebdesign.com/magento/magento-one-step-checkout-module.html
+Script base para implementa√ß√£o da busca do CEP por Ajax: http://www.pinceladasdaweb.com.br/blog/2012/01/31/webservice-consulta-de-cep-diretamente-ao-site-dos-correios/
+Tradu√ß√µes pt-BR do Magento: http://www.cerebrum.com.br/index.php/magento-portugues-download-traducao-brasil-cielo-redecard-american-express.html
+Projeto iniciado dia: 11/08/2012 √°s 19h
+Est√°gio do projeto:  Vers√£o Beta (Em desenvolvimento)
+Previs√£o do lan√ßamento Beta: 20/08/2012 (ou quanto antes!)
+Link do demo: http://www.deivison.com.br/demos/shop2
+
+Gostou do m√≥dulo?
+=================
+
+Se voc√™ gostou, se foi √∫til para voc√™, se fez voc√™ economizar aquela grana pois estava prestes a pagar caro por aquele m√≥dulo pago, pois n√£o achava um solu√ß√£o gratuita que te atendesse e queira prestigiar o trabalho feito efetuando uma doa√ß√£o de qualquer valor, n√£o vou negar e vou ficar grato, voc√™ pode fazer isso utilizando o Pagseguro no bot√£o abaixo:
+
+<!-- INICIO FORMULARIO BOTAO PAGSEGURO -->
+<div align="center"><form action="https://pagseguro.uol.com.br/checkout/v2/donation.html" method="post" target="pagseguro"><input type="hidden" name="receiverEmail" value="2ds@deivison.com.br" /> <input type="hidden" name="currency" value="BRL" /> <input type="image" name="submit" src="https://p.simg.uol.com.br/out/pagseguro/i/botoes/doacoes/209x48-doar-laranja-assina.gif" alt="Pague com PagSeguro - √© r√°pido, gr√°tis e seguro!" /></form></div>
