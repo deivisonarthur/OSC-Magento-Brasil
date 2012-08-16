@@ -62,6 +62,7 @@ O módulo ainda encontra-se em fase de desenvolvimento! Ou seja, Estágio Beta �
 Créditos:
 =================
 * Projeto base de OSC utilizado: http://www.interiorwebdesign.com/magento/magento-one-step-checkout-module.html
+* Instação dos estados por Alex Braga: http://www.alexbraga.net
 * Script base para implementação da busca do CEP por Ajax: http://www.pinceladasdaweb.com.br/blog/2012/01/31/webservice-consulta-de-cep-diretamente-ao-site-dos-correios/
 * Traduções pt-BR do Magento: http://www.cerebrum.com.br/index.php/magento-portugues-download-traducao-brasil-cielo-redecard-american-express.html
 
