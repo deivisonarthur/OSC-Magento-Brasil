@@ -32,9 +32,13 @@ Também pretendo implementar opções de segurança, como:
 veja mais dicas sobre análise de risco e fraude no Magento em:
 http://www.deivison.com.br/blog/2012/07/25/modulo-de-analise-de-risco-e-fraude-no-magento-sem-mensalidade/
 
+Site e comunidade do projeto:
+=================
+http://onestepcheckout.com.br/
+
 Demostração online do projeto:
 =================
-http://www.deivison.com.br/demos/shop2
+http://www.deivison.com.br/demos/shop2/teste.html
 
 Observação Importante!
 =================
