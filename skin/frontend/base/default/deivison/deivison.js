@@ -20,8 +20,104 @@
             });
             */
 
-            $j('input[name*="[fax]"]').mask("(99)9999-9999");
-            $j('input[name*="[telephone]"]').mask("(99)9999-9999");
+            $j('input[name*="[telephone]"]').focus(function(){
+              $j(this).val('');
+            });
+
+            $j('input[name*="[telephone]"]').keypress( function(e){
+                if (e.keyCode >= 9){
+                    length = this.value.length;
+                    if (length == 0)
+                      this.value += "(";
+
+                    if (length == 3)
+                      this.value += ")";
+                    /*
+                    Testa para ver se o ddd começa com 11 e coloca maxlength para 14
+                            exemplo: (11)95345-1234 que antes era assim (11)5345-1234
+                    */
+                    if(/(\(11\)9(5[0-9]|6[0-9]|7[01234569]|8[0-9]|9[0-9])).+/i.test(this.value)){
+                        $j(this).attr('maxlength','14');
+                        if (length == 9)
+                          this.value += "-";
+                    } else {
+                        $j(this).attr('maxlength','13');
+                        if (length == 8)
+                          this.value += "-";
+                    }
+                }
+            });
+
+
+            $j('input[name*="[fax]"]').focus(function(){
+              $j(this).val('');
+            });
+
+            $j('input[name*="[fax]"]').keypress( function(e){
+                if (e.keyCode >= 9){
+                    length = this.value.length;
+                    if (length == 0)
+                      this.value += "(";
+
+                    if (length == 3)
+                      this.value += ")";
+                    /*
+                    Testa para ver se o ddd começa com 11 e coloca maxlength para 14
+                            exemplo: (11)95345-1234 que antes era assim (11)5345-1234
+                    */
+                    if(/(\(11\)9(5[0-9]|6[0-9]|7[01234569]|8[0-9]|9[0-9])).+/i.test(this.value)){
+                        $j(this).attr('maxlength','14');
+                        if (length == 9)
+                          this.value += "-";
+                    } else {
+                        $j(this).attr('maxlength','13');
+                        if (length == 8)
+                          this.value += "-";
+                    }
+                }
+            });
+
+
+
+            $j('input[name*="[taxvat]"]').blur( function(){
+
+                v = $j(this).val();
+
+                //para testar cnpj: 78.425.986/0036-15 ou 78425986003615
+
+                //Remove tudo o que não é dígito
+                v = v.replace(/\D/g,"");
+
+                if (v.length <= 11) { //CPF
+
+                    //Coloca um ponto entre o terceiro e o quarto dígitos
+                    v=v.replace(/(\d{3})(\d)/,"$1.$2");
+
+                    //Coloca um ponto entre o terceiro e o quarto dígitos
+                    //de novo (para o segundo bloco de números)
+                    v=v.replace(/(\d{3})(\d)/,"$1.$2");
+
+                    //Coloca um hífen entre o terceiro e o quarto dígitos
+                    v=v.replace(/(\d{3})(\d{1,2})$/,"$1-$2");
+
+                } else { //CNPJ
+
+                    //Coloca ponto entre o segundo e o terceiro dígitos
+                    v=v.replace(/^(\d{2})(\d)/,"$1.$2");
+
+                    //Coloca ponto entre o quinto e o sexto dígitos
+                    v=v.replace(/^(\d{2})\.(\d{3})(\d)/,"$1.$2.$3");
+
+                    //Coloca uma barra entre o oitavo e o nono dígitos
+                    v=v.replace(/\.(\d{3})(\d)/,".$1/$2");
+
+                    //Coloca um hífen depois do bloco de quatro dígitos
+                    v=v.replace(/(\d{4})(\d)/,"$1-$2");
+                }
+
+                $j(this).val(v);
+
+            });
 
 
         });
@@ -33,16 +129,6 @@
         /********************* Busca de CEP na base dos correios por Ajax *********************/
         /********************* Busca de CEP na base dos correios por Ajax *********************/
 
-        function XMLHTTPRequest() {
-            if (window.XMLHttpRequest) {
-                xhr = new XMLHttpRequest();
-            } else if (window.ActiveXObject) {
-                xhr = new ActiveXObject("Microsoft.XMLHTTP");
-            }
-            return xhr;
-        }
-
-        var ajax = XMLHTTPRequest();
 
         function buscarEndereco(host, quale) {
 
@@ -87,7 +173,7 @@
 
     	// Adicionar classe de validacao de cpf e cnpj ao Taxvat
     	//$j('#billing:taxvat"]').addClassName('validar_cpf'); //removido e colocado na mão
-                                                
+
         function validaCPF(cpf,pType){
         	var cpf_filtrado = "", valor_1 = " ", valor_2 = " ", ch = "";
         	var valido = false;
