@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<layout version="0.1.0">
+<layout version="0.1.0">                                                  
 
     <onepagecheckout_index_index translate="label">
         <label>Easy Checkout</label>
@@ -10,9 +10,9 @@
         </reference>
         <reference name="head">
             <action method="addItem" ifconfig="onepagecheckout/general/enabled"><type>skin_css</type><name>css/onepagecheckout.css</name></action>
-            <action method="addItem" ifconfig="onepagecheckout/general/enabled"><type>skin_js</type><name>deivison/jquery.js</name></action>
-            <action method="addItem" ifconfig="onepagecheckout/general/enabled"><type>skin_js</type><name>deivison/jquery.maskedinput-1.2.2.min.js</name></action>
-            <action method="addItem" ifconfig="onepagecheckout/general/enabled"><type>skin_js</type><name>deivison/deivison.js</name></action>
+            <action method="addItem" ifconfig="onepagecheckout/general/jquery"><type>skin_js</type><name>deivison/jquery.js</name></action>
+            <action method="addItem" ifconfig="onepagecheckout/general/jquery"><type>skin_js</type><name>deivison/jquery.maskedinput-1.2.2.min.js</name></action>
+            <action method="addItem" ifconfig="onepagecheckout/general/jquery"><type>skin_js</type><name>deivison/deivison.js</name></action>
         </reference>
 
 
@@ -86,7 +86,7 @@
 
     <onepagecheckout_index_success translate="label">
         <reference name="root">
-            <action method="setTemplate"><template>page/2columns-right.phtml</template></action>
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
         </reference>
         <reference name="content">
             <block type="checkout/onepage_success" name="checkout.success" template="checkout/success.phtml"/>
@@ -94,11 +94,64 @@
     </onepagecheckout_index_success>
 
     <onepagecheckout_index_failure translate="label">
-        <reference name="root">
-            <action method="setTemplate"><template>page/2columns-right.phtml</template></action>
+        <reference name="root">                    <!-- page/2columns-right.phtml -->
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
         </reference>
         <reference name="content">
             <block type="checkout/onepage_failure" name="checkout.failure" template="checkout/onepage/failure.phtml"/>
         </reference>
     </onepagecheckout_index_failure>
+    
+    <customer_account_create>
+        <reference name="customer_form_register">
+            <action method="setTemplate"><template>onepagecheckout/persistent/customer/form/register.phtml</template></action>
+        </reference>
+    </customer_account_create>
+    
+    <customer_account_edit>
+    	<reference name="customer_edit">
+    		<action method="setTemplate"><template>onepagecheckout/persistent/customer/form/edit.phtml</template></action>
+    	</reference>
+    </customer_account_edit>
+
+
+
+    <!-- Aqui foi foda! -->
+
+    <customer_address_form translate="label">
+        <reference name="my.account.wrapper">
+            <block type="customer/address_edit" name="customer_address_edit" template="onepagecheckout/persistent/customer/address/edit.phtml"/>
+        </reference>
+    </customer_address_form>
+
+
+
+    <customer_address_index translate="label">
+        <reference name="my.account.wrapper">
+            <block type="customer/address_book" name="address_book" template="onepagecheckout/persistent/customer/address/book.phtml"/>
+        </reference>
+    </customer_address_index>
+
+
+
+<!--
+    <customer_address_form translate="label">
+        <label>Customer My Account Address Edit Form</label>
+        <update handle="customer_account"/>
+        <reference name="my.account.wrapper">
+            <block type="customer/address_edit" name="customer_address_edit" template="onepagecheckout/persistent/customer/address/edit.phtml"/>
+        </reference>
+    </customer_address_form>
+
+
+    <customer_address_index translate="label">
+        <label>Customer My Account Address Book</label>
+        <update handle="customer_account"/>
+        <reference name="my.account.wrapper">
+            <block type="customer/address_book" name="address_book" template="onepagecheckout/persistent/customer/address/book.phtml"/>
+        </reference>
+    </customer_address_index>
+
+-->
+
 </layout>

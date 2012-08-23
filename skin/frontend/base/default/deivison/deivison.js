@@ -1,17 +1,45 @@
-/*==============================================================================
+/*=========================================================================================================================================================
  *
- *  OSC-Magento-Brasil - Por Deivison Arthur / www.deivison.com.br
+ *  PROJETO OSC MAGENTO BRASIL - VERSÃO FINAL V3.0
+ *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ *  O módulo One Step Checkout normatizado para a localização brasileira.
+ *  site do projeto: http://onestepcheckout.com.br/
+ *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *
- * =============================================================================
+ *
+ *
+ *  Mmantenedores do Projeto:
+ *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ *
+ *  Deivison Arthur Lemos Serpa
+ *  deivison.arthur@gmail.com
+ *  www.deivison.com.br
+ *  (21)9203-8986
+ *
+ *  Denis Colli Spalenza
+ *  http://www.xpdev.com.br
+ *
+ *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ *
+ *
+ *
+ *  GOSTOU DO MÓDULO?
+ *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ *  Se você gostou, se foi útil para você, se fez você economizar aquela grana pois estava prestes a pagar caro por aquele módulo pago, pois não achava uma
+ *  solução gratuita que te atendesse e queira prestigiar o trabalho feito efetuando uma doação de qualquer valor, não vou negar e vou ficar grato! você
+ *  pode fazer isso visitando a página do projeto em: http://onestepcheckout.com.br/
+ *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ *
+/*=========================================================================================================================================================
  */
 
 
 
         $j(document).ready(function(){
 
-             //descomente para colocar o "-" no CEP porém se estiver trabalhando com o módulo Matrix Rates não trabalha com o "-"
-            /*
-            $j('input[name*="[postcode]"]').keydown( function(e){
+             //Coloca o "-" no CEP porém se estiver trabalhando com o módulo Matrix Rates não trabalha com o "-"
+             /*
+            $j('input[class*="tracoAtivo"]').keydown( function(e){
                 if (e.keyCode != 8){
                   length = this.value.length;
                   if (length == 5)
@@ -19,12 +47,13 @@
                 }
             });
             */
+            $j('input[class*="tracoAtivo"]').mask("99999-999");
 
-            $j('input[name*="[telephone]"]').focus(function(){
+            $j('input[name*="telephone"]').focus(function(){
               $j(this).val('');
             });
 
-            $j('input[name*="[telephone]"]').keypress( function(e){
+            $j('input[name*="telephone"]').keypress( function(e){
                 if (e.keyCode >= 9){
                     length = this.value.length;
                     if (length == 0)
@@ -49,11 +78,11 @@
             });
 
 
-            $j('input[name*="[fax]"]').focus(function(){
+            $j('input[name*="fax"]').focus(function(){
               $j(this).val('');
             });
 
-            $j('input[name*="[fax]"]').keypress( function(e){
+            $j('input[name*="fax"]').keypress( function(e){
                 if (e.keyCode >= 9){
                     length = this.value.length;
                     if (length == 0)
@@ -77,9 +106,76 @@
                 }
             });
 
+            $j('input[name*="celular"]').focus(function(){
+              $j(this).val('');
+            });
+
+            $j('input[name*="celular"]').keypress( function(e){
+                if (e.keyCode >= 9){
+                    length = this.value.length;
+                    if (length == 0)
+                      this.value += "(";
+
+                    if (length == 3)
+                      this.value += ")";
+                    /*
+                    Testa para ver se o ddd começa com 11 e coloca maxlength para 14
+                            exemplo: (11)95345-1234 que antes era assim (11)5345-1234
+                    */
+                    if(/(\(11\)9(5[0-9]|6[0-9]|7[01234569]|8[0-9]|9[0-9])).+/i.test(this.value)){
+                        $j(this).attr('maxlength','14');
+                        if (length == 9)
+                          this.value += "-";
+                    } else {
+                        $j(this).attr('maxlength','13');
+                        if (length == 8)
+                          this.value += "-";
+                    }
+                }
+            });
+
+            $j('input[name*="taxvat"]').blur( function(){
+
+                v = $j(this).val();
+
+                //para testar cnpj: 78.425.986/0036-15 ou 78425986003615
+
+                //Remove tudo o que não é dígito
+                v = v.replace(/\D/g,"");
+
+                if (v.length <= 11) { //CPF
+
+                    //Coloca um ponto entre o terceiro e o quarto dígitos
+                    v=v.replace(/(\d{3})(\d)/,"$1.$2");
+
+                    //Coloca um ponto entre o terceiro e o quarto dígitos
+                    //de novo (para o segundo bloco de números)
+                    v=v.replace(/(\d{3})(\d)/,"$1.$2");
+
+                    //Coloca um hífen entre o terceiro e o quarto dígitos
+                    v=v.replace(/(\d{3})(\d{1,2})$/,"$1-$2");
+
+                } else { //CNPJ
+
+                    //Coloca ponto entre o segundo e o terceiro dígitos
+                    v=v.replace(/^(\d{2})(\d)/,"$1.$2");
+
+                    //Coloca ponto entre o quinto e o sexto dígitos
+                    v=v.replace(/^(\d{2})\.(\d{3})(\d)/,"$1.$2.$3");
+
+                    //Coloca uma barra entre o oitavo e o nono dígitos
+                    v=v.replace(/\.(\d{3})(\d)/,".$1/$2");
+
+                    //Coloca um hífen depois do bloco de quatro dígitos
+                    v=v.replace(/(\d{4})(\d)/,"$1-$2");
+                }
+
+                $j(this).val(v);
+
+            });
 
 
-            $j('input[name*="[taxvat]"]').blur( function(){
+            $j('input[name*="cpfcnpj"]').blur( function(){
 
                 v = $j(this).val();
 
@@ -173,7 +269,7 @@
 
     	// Adicionar classe de validacao de cpf e cnpj ao Taxvat
     	//$j('#billing:taxvat"]').addClassName('validar_cpf'); //removido e colocado na mão
-
+                                                
         function validaCPF(cpf,pType){
         	var cpf_filtrado = "", valor_1 = " ", valor_2 = " ", ch = "";
         	var valido = false;

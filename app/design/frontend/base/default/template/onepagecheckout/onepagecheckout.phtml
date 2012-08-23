@@ -2,11 +2,32 @@
     <h1 class='h1_opc'><?php echo Mage::getStoreConfig('onepagecheckout/general/title') ?></h1>
     <?php echo $this->__('Fill in the fields below to complete your purchase!') ?>
     <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()){ ?>
+
+
+
+
+    <?php
+    $guest_checkout1 = Mage::getStoreConfig('onepagecheckout/general/guest_checkout1');
+    if ($guest_checkout1 === '1') : ?>
     <p class="onepagecheckout_loginarea">
         <a href="javascript:void(0)" class="onepagecheckout_loginlink" onclick='open_login();'>
             <?php echo $this->__('Already registered? Click here to login') ?>
         </a>
     </p>
+    <?php endif; ?>
+
+
+    <?php
+    $guest_checkout2 = Mage::getStoreConfig('onepagecheckout/general/guest_checkout2');    
+    if ($guest_checkout2 === '1') : ?>
+    <p class="onepagecheckout_loginarea">
+        <a href="<?=Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>customer/account/login/" class="onepagecheckout_loginlink" >
+            <?php echo $this->__('Already registered? Click here to login') ?>
+        </a>
+    </p>
+    <?php endif; ?>
+
+
     
 	<?php 
 	
