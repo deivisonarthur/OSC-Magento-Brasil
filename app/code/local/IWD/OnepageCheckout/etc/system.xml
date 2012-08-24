@@ -71,6 +71,9 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </jquery>
+
+<!--
+
                         <tracoativo translate="label" module="onepagecheckout">
                             <label>Permitir formatacao do campo CEP?</label>
                             <comment>obs: Coloca o "-" no CEP, porem se estiver trabalhando com o modulo Matrix Rates nao trabalha com o "-"</comment>
@@ -82,7 +85,7 @@
                             <show_in_store>1</show_in_store>
                         </tracoativo>
 
-
+-->
 
 
 

@@ -229,7 +229,7 @@
             <general>
                 <enabled>1</enabled>
                 <jquery>1</jquery>
-                <tracoativo>1</tracoativo>
+                <tracoativo>0</tracoativo>
                 <title>Finalize sua compra em 1 etapa</title>
                 <!--
                 <shipping_method>flatrate_flatrate</shipping_method>
