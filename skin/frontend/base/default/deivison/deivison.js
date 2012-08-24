@@ -40,11 +40,9 @@
              //Coloca o "-" no CEP porém se estiver trabalhando com o módulo Matrix Rates não trabalha com o "-"
 
             $j('input[class*="tracoAtivo"]').keydown( function(e){
-                if (e.keyCode != 10){
                   length = this.value.length;
                   if (length == 5)
                       this.value += "-";
-                }
             });
 
             //$j('input[class*="tracoAtivo"]').mask("99999-999");     apresenta erro e nao calcula o frete
