@@ -130,7 +130,7 @@ $has_addr	= $this->customerHasAddresses();
                         </select>
                         <script type="text/javascript">
 						//<![CDATA[
-                            $j('#tipopessoa').children('option').eq(<?php echo $this->htmlEscape($this->getCustomer()->getTipopessoa()) ?>).attr('selected', 'selected');
+                            $j('#tipopessoa').children('option').eq(<?php echo @$this->htmlEscape($this->getCustomer()->getTipopessoa()) ?>).attr('selected', 'selected');
 						//]]>
 						</script>
 					</div>

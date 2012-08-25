@@ -114,6 +114,11 @@ if ($jquery !== '0') :
                             ?>
 
                         </select>
+                        <script type="text/javascript">
+						//<![CDATA[
+                            $j('#tipopessoa').children('option').eq(<?php echo @$this->htmlEscape($this->getCustomer()->getTipopessoa()) ?>).attr('selected', 'selected');
+						//]]>
+						</script>                        
                     </div>
                 </li>
              <?php endif; ?>
