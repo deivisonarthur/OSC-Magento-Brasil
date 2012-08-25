@@ -80,7 +80,7 @@ http://onestepcheckout.com.br/
 
 Demostração online do projeto:
 =================
-http://onestepcheckout.com.br/final3/dddddd.html
+http://onestepcheckout.com.br/final3/magento-1.5.1.0/onestep-magento-1-5-1-1.html
 
 Tutorial para instalação e tratamentos de erros:
 =================
