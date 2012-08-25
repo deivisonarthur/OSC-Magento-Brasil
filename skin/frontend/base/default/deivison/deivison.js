@@ -37,16 +37,28 @@
 
         $j(document).ready(function(){
 
-             //Coloca o "-" no CEP porém se estiver trabalhando com o módulo Matrix Rates não trabalha com o "-"
+            //Ao se coloca o "-" no CEP não irá calcular o frete caso use o módulo Matrix Rates, pois ele não trabalha com o "-"
+            /*Essa opção é caso queira que toda vez ao se entrar no campo ele limpe-o*/
+            $j('input[class*="tracoAtivo"]').focus(function(){
+              $j(this).val('');
+            });
 
+             /*Script do traço do cep*/
             $j('input[class*="tracoAtivo"]').keydown( function(e){
-                  length = this.value.length;
-                  if (length == 5)
-                      this.value += "-";
+                  $j(this).attr('maxlength','9');
+                  if (e.keyCode >= 9){
+                    length = this.value.length;
+                    if (length == 5)
+                        this.value += "-";
+                  }
             });
 
             //$j('input[class*="tracoAtivo"]').mask("99999-999");     apresenta erro e nao calcula o frete
 
+
+
+
+            
             $j('input[name*="telephone"]').focus(function(){
               $j(this).val('');
             });

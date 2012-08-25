@@ -255,7 +255,7 @@
             <address_form>
                 <cpfcnpj>required</cpfcnpj>
                 <cpfcnpjtaxvat>hidden</cpfcnpjtaxvat>
-                <tipopessoa>required</tipopessoa>
+                <tipopessoa>hidden</tipopessoa>
                 <ie>required</ie>
                 <rgi>required</rgi>
                 <company>required</company>

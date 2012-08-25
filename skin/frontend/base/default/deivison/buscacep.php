@@ -55,7 +55,7 @@ function simple_curl($url,$post=array(),$get=array()){
 	$ch = curl_init($url[0]."?".http_build_query($get));
 	curl_setopt ($ch, CURLOPT_POST, 1);
 	curl_setopt ($ch, CURLOPT_POSTFIELDS, http_build_query($post));
-	curl_setopt ($ch, CURLOPT_FOLLOWLOCATION, 1);
+	curl_setopt ($ch, CURLOPT_FOLLOWLOCATION, 0);     /*Se der erro coloque 1*/
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	return curl_exec ($ch);
 }
