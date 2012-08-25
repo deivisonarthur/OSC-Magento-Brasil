@@ -102,12 +102,22 @@ if ($jquery !== '0') :
                     <label for="tipopessoa" <?php if ( $tipopessoa  === 'required' ){ echo 'class="required"'; }?> > <?php if ( $tipopessoa  === 'required' ){ echo '<em>*</em>'; }?>  <?php echo $this->__('Tipo Pessoa') ?></label>
                     <div class="input-box">
                         <select name="tipopessoa" id="tipopessoa" <?php if ( $tipopessoa  === 'required' ){ echo 'class="required"'; }?> >
+
                         	<?php
-                        		 $options = $attribute->getSource()->getAllOptions();
+                            if (version_compare(Mage::getVersion(), '1.7.0.2', '>=')){
+                                 $options = $attribute->getSource()->getAllOptions();
                         		 foreach($options as $option){
                         	?>
-                        		<option value='<?php echo $option['value']?>' <?php if($this->getFormData()->getTipopessoa() == $option['value']){ echo 'selected="selected"';}?>><?php echo $this->__($option['label'])?></option>
-                        	<?php } ?>
+                        		<option value='<?php echo $option['value']?>'><?php echo $this->__($option['label'])?></option>
+                        	<?php };
+                            }else{ ?>
+                                 <option value=''>Escolha a opcao</option>
+                                 <option value='1'>Fisica</option>
+                                 <option value='2'>Juridica</option>
+                                 <option value='3'>Outros</option>
+                            <?php
+                            }
+                            ?>
                         </select>
                     </div>
                 </li>
@@ -275,7 +285,7 @@ if ($jquery !== '0') :
             <p class="back-link"><a href="<?php echo $this->escapeUrl($this->getBackUrl()) ?>" class="back-link"><small>&laquo; </small><?php echo $this->__('Back') ?></a></p>
             <button type="submit" title="<?php echo $this->__('Submit') ?>" class="button"><span><span><?php echo $this->__('Submit') ?></span></span></button>
         </div>
-        <?php if (Mage::helper('checkout')->isContextCheckout()): ?>
+        <?php if (@Mage::helper('checkout')->isContextCheckout()): ?>
             <input name="context" type="hidden" value="checkout" />
         <?php endif; ?>
     </form>

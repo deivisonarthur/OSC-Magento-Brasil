@@ -125,14 +125,14 @@
     </customer_address_form>
 
 
-
+<!--
     <customer_address_index translate="label">
         <reference name="my.account.wrapper">
             <block type="customer/address_book" name="address_book" template="onepagecheckout/persistent/customer/address/book.phtml"/>
         </reference>
     </customer_address_index>
 
-
+-->
 
 <!--
     <customer_address_form translate="label">

@@ -111,12 +111,22 @@ $has_addr	= $this->customerHasAddresses();
 					<?php if($tipopessoa === 'required') { echo ' <sup>*</sup> ';}?>
 					<div class="data_area">
                         <select name="billing[tipopessoa]" id="tipopessoa" class="input-text t1<?php if($tipopessoa === 'required'){ echo ' required-entry';} ?>" >
+
                         	<?php
-                        		 $options = $attribute->getSource()->getAllOptions();
+                            if (version_compare(Mage::getVersion(), '1.7.0.2', '>=')){
+                                 $options = $attribute->getSource()->getAllOptions();
                         		 foreach($options as $option){
                         	?>
                         		<option value='<?php echo $option['value']?>'><?php echo $this->__($option['label'])?></option>
-                        	<?php } ?>
+                        	<?php };
+                            }else{ ?>
+                                 <option value=''>Escolha a opcao</option>
+                                 <option value='1'>Fisica</option>
+                                 <option value='2'>Juridica</option>
+                                 <option value='3'>Outros</option>
+                            <?php
+                            }
+                            ?>
                         </select>
                         <script type="text/javascript">
 						//<![CDATA[

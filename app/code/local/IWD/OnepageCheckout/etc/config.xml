@@ -229,7 +229,7 @@
             <general>
                 <enabled>1</enabled>
                 <jquery>1</jquery>
-                <tracoativo>0</tracoativo>
+                <tracoativo>1</tracoativo>
                 <title>Finalize sua compra em 1 etapa</title>
                 <!--
                 <shipping_method>flatrate_flatrate</shipping_method>
@@ -255,7 +255,7 @@
             <address_form>
                 <cpfcnpj>required</cpfcnpj>
                 <cpfcnpjtaxvat>hidden</cpfcnpjtaxvat>
-                <tipopessoa>hidden</tipopessoa>
+                <tipopessoa>required</tipopessoa>
                 <ie>required</ie>
                 <rgi>required</rgi>
                 <company>required</company>
