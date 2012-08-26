@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+    <modules>
+        <DeivisonArthur_OnepageCheckout>
+            <version>3.0.2</version>
+        </DeivisonArthur_OnepageCheckout>
+    </modules>
+    <!-- Adicionado -->
+    <admin>
+        <fieldsets>
+            <customer_dataflow>
+                <!-- Adiciona os campos  tipopessoa, rg, ie, cpfcnpj, celular e empresa -->
+                <tipopessoa><billing>1</billing><shipping>1</shipping></tipopessoa>
+                <rg><billing>1</billing><shipping>1</shipping></rg>
+                <ie><billing>1</billing><shipping>1</shipping></ie>
+                <cpfcnpj><billing>1</billing><shipping>1</shipping></cpfcnpj>
+                <celular><billing>1</billing><shipping>1</shipping></celular>
+                <empresa><billing>1</billing><shipping>1</shipping></empresa>
+            </customer_dataflow>
+        </fieldsets>
+    </admin>
+    <!-- fim -->
+    <global>
+       <resources>
+           <onepagecheckout_setup>
+              <setup>
+                 <module>DeivisonArthur_OnepageCheckout</module>
+                 <class>Mage_Customer_Model_Entity_Setup</class>
+              </setup>
+              <connection>
+                 <use>core_setup</use>
+              </connection>
+          </onepagecheckout_setup>
+          <onepagecheckout_write>
+            <connection>
+               <use>core_write</use>
+             </connection>
+          </onepagecheckout_write>
+          <onepagecheckout_read>
+            <connection>
+              <use>core_read</use>
+         </connection>
+        </onepagecheckout_read>
+       </resources>
+
+
+        <!-- Adicionado -->
+        <fieldsets>
+            <sales_copy_order_billing_address>
+                <!-- Adiciona os campos  tipopessoa, rg, ie, cpfcnpj, celular, nomeentrega, rgientrega, cpfentrega, telentrega -->
+                <tipopessoa><to_order>*</to_order></tipopessoa>
+                <rg><to_order>*</to_order></rg>
+                <ie><to_order>*</to_order></ie>
+                <cpfcnpj><to_order>*</to_order></cpfcnpj>
+                <celular><to_order>*</to_order></celular>
+                <empresa><to_order>*</to_order></empresa>
+            </sales_copy_order_billing_address>
+            <sales_copy_order_shipping_address>
+                <!-- Adiciona os campos  tipopessoa, rg, ie, cpfcnpj, celular, nomeentrega, rgientrega, cpfentrega, telentrega -->
+                <tipopessoa><to_order>*</to_order></tipopessoa>
+                <rg><to_order>*</to_order></rg>
+                <ie><to_order>*</to_order></ie>
+                <cpfcnpj><to_order>*</to_order></cpfcnpj>
+                <celular><to_order>*</to_order></celular>
+                <empresa><to_order>*</to_order></empresa>
+            </sales_copy_order_shipping_address>
+            <sales_convert_quote_address>
+                <!-- Adiciona os campos  tipopessoa, rg, ie, cpfcnpj, celular, nomeentrega, rgientrega, cpfentrega, telentrega -->
+                <tipopessoa><to_order_address>*</to_order_address><to_customer_address>*</to_customer_address></tipopessoa>
+                <rg><to_order_address>*</to_order_address><to_customer_address>*</to_customer_address></rg>
+                <ie><to_order_address>*</to_order_address><to_customer_address>*</to_customer_address></ie>
+                <cpfcnpj><to_order_address>*</to_order_address><to_customer_address>*</to_customer_address></cpfcnpj>
+                <celular><to_order_address>*</to_order_address><to_customer_address>*</to_customer_address></celular>
+                <empresa><to_order_address>*</to_order_address><to_customer_address>*</to_customer_address></empresa>
+            </sales_convert_quote_address>
+            <sales_convert_order_address>
+                <!-- Adiciona os campos  tipopessoa, rg, ie, cpfcnpj, celular, nomeentrega, rgientrega, cpfentrega, telentrega -->
+                <tipopessoa><to_quote_address>*</to_quote_address></tipopessoa>
+                <rg><to_quote_address>*</to_quote_address></rg>
+                <ie><to_quote_address>*</to_quote_address></ie>
+                <cpfcnpj><to_quote_address>*</to_quote_address></cpfcnpj>
+                <celular><to_quote_address>*</to_quote_address></celular>
+                <empresa><to_quote_address>*</to_quote_address></empresa>
+            </sales_convert_order_address>
+            <customer_address>
+                <!-- Adiciona os campos  tipopessoa, rg, ie, cpfcnpj, celular, nomeentrega, rgientrega, cpfentrega, telentrega -->
+                 <tipopessoa><to_quote_address>*</to_quote_address></tipopessoa>
+                 <rg><to_quote_address>*</to_quote_address></rg>
+                 <ie><to_quote_address>*</to_quote_address></ie>
+                 <cpfcnpj><to_quote_address>*</to_quote_address></cpfcnpj>
+                 <celular><to_quote_address>*</to_quote_address></celular>
+                 <empresa><to_quote_address>*</to_quote_address></empresa>
+            </customer_address>
+            <checkout_onepage_billing>
+                <!-- Adiciona os campos  tipopessoa, rg, ie, cpfcnpj, celular, nomeentrega, rgientrega, cpfentrega, telentrega -->
+                <tipopessoa><to_customer>*</to_customer></tipopessoa>
+                <rg><to_customer>*</to_customer></rg>
+                <ie><to_customer>*</to_customer></ie>
+                <cpfcnpj><to_customer>*</to_customer></cpfcnpj>
+                <celular><to_customer>*</to_customer></celular>
+                <empresa><to_customer>*</to_customer></empresa>
+            </checkout_onepage_billing>
+        </fieldsets>
+        <!-- fim -->
+
+
+        <models>
+            <onepagecheckout>
+                <class>DeivisonArthur_OnepageCheckout_Model</class>
+            </onepagecheckout>
+            <onepagecheckout_adminhtml>
+                <class>DeivisonArthur_OnepageCheckout_Adminhtml_Model</class>
+            </onepagecheckout_adminhtml>
+        </models>
+        <blocks>
+            <checkout>
+                <rewrite>
+                    <links>DeivisonArthur_OnepageCheckout_Block_Links</links>
+                </rewrite>
+            </checkout>
+            <onepagecheckout>
+                <class>DeivisonArthur_OnepageCheckout_Block</class>
+            </onepagecheckout>
+        </blocks>
+        <helpers>
+            <checkout>
+                <rewrite>
+                    <url>DeivisonArthur_OnepageCheckout_Helper_Url</url>
+                </rewrite>
+            </checkout>
+            <onepagecheckout>
+                <class>DeivisonArthur_OnepageCheckout_Helper</class>
+            </onepagecheckout>
+        </helpers>
+    </global>
+
+    <frontend>
+        <routers>
+            <onepagecheckout>
+                <use>standard</use>
+                <args>
+                    <module>DeivisonArthur_OnepageCheckout</module>
+                    <frontName>onepagecheckout</frontName>
+                </args>
+            </onepagecheckout>
+        </routers>
+        <translate>
+            <modules>
+                <DeivisonArthur_OnepageCheckout>
+                     <files>
+                          <default>DeivisonArthur_OnepageCheckout.csv</default>
+                     </files>
+                </DeivisonArthur_OnepageCheckout>
+            </modules>
+        </translate>
+        <layout>
+             <updates>
+                  <onepagecheckout>
+                        <file>onepagecheckout.xml</file>
+                  </onepagecheckout>
+             </updates>
+        </layout>
+        <events>
+             <sales_model_service_quote_submit_after>
+                <observers>
+                    <onepagecheckout>
+                        <type>model</type>
+                        <class>onepagecheckout/observer</class>
+                        <method>removeHistoryComment</method>
+                    </onepagecheckout>
+                </observers>
+            </sales_model_service_quote_submit_after>
+            <sales_model_service_quote_submit_before>
+                <observers>
+                    <onepagecheckout>
+                        <type>model</type>
+                        <class>onepagecheckout/observer</class>
+                        <method>addHistoryComment</method>
+                    </onepagecheckout>
+                </observers>
+            </sales_model_service_quote_submit_before>
+
+      		<controller_action_layout_render_before_checkout_cart_index>
+                <observers>
+                    <onepagecheckout>
+                        <class>onepagecheckout/observer</class>
+                        <method>setEmptyCartTemplate</method>
+                    </onepagecheckout>
+                </observers>
+            </controller_action_layout_render_before_checkout_cart_index>
+
+        </events>
+    </frontend>
+
+    <adminhtml>
+        <translate>
+            <modules>
+                <IWD_OnepageCheckout>
+                    <files>
+                        <default>IWD_OnepageCheckout.csv</default>
+                    </files>
+                </IWD_OnepageCheckout>
+            </modules>
+        </translate>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <onepagecheckout translate="title" module="onepagecheckout">
+                                            <title>One Page Checkout Section</title>
+                                        </onepagecheckout>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+
+    <default>
+
+        <onepagecheckout>
+            <general>
+                <enabled>1</enabled>
+                <jquery>1</jquery>
+                <tracoativo>1</tracoativo>
+                <title>Finalize sua compra em 1 etapa</title>
+                <!--
+                <shipping_method>flatrate_flatrate</shipping_method>
+                 -->
+                <payment_method>authorizenet</payment_method>
+                <country>BR</country>
+                <habilitarcad>1</habilitarcad>
+                <guest_checkout>1</guest_checkout>
+                <guest_checkout1>0</guest_checkout1>
+                <guest_checkout2>1</guest_checkout2>
+                <shipping_address>1</shipping_address>
+                <newsletter_checkbox>1</newsletter_checkbox>
+                <comment>0</comment>
+            </general>
+
+
+            <address_form>
+                <cpfcnpj>required</cpfcnpj>
+                <cpfcnpjtaxvat>hidden</cpfcnpjtaxvat>
+                <tipopessoa>required</tipopessoa>
+                <ie>required</ie>
+                <rgi>required</rgi>
+                <company>required</company>
+                <address>required</address>
+                <address2>required</address2>
+                <address3>optional</address3>
+                <address4>required</address4>
+                <city>required</city>
+                <country>hidden</country>
+                <zip>required</zip>
+                <sexo>required</sexo>
+                <aniversario>required</aniversario>
+                <state>required</state>
+                <phone>required</phone>
+                <fax>optional</fax>
+                <celular>required</celular>
+            </address_form>
+
+            <outrasopcoes>
+                <cpfcnpjregistro>required</cpfcnpjregistro>
+                <tipopessoaregistro>required</tipopessoaregistro>
+                <ieregistro>required</ieregistro>
+                <companyregistro>required</companyregistro>
+                <rgiregistro>required</rgiregistro>
+                <rgientrega>required</rgientrega>
+                <cpfentrega>required</cpfentrega>
+            </outrasopcoes>
+            <agreements>
+                <enabled>0</enabled>
+                <output>minimal</output>
+            </agreements>
+
+            <geo_ip>
+                <country>0</country>
+                <country_file>GeoIP.dat</country_file>
+                <city>0</city>
+                <city_file>GeoLiteCity.dat</city_file>
+            </geo_ip>
+        </onepagecheckout>
+    </default>
+    <admin>
+        <routers>
+            <onepagecheckout>
+                <use>admin</use>
+                <args>
+                    <module>IWD_OnepageCheckout</module>
+                    <frontName>onepagecheckout</frontName>
+                </args>
+            </onepagecheckout>
+        </routers>
+    </admin>
+</config>

@@ -265,6 +265,9 @@
                         document.getElementById(quale+':region').selectedIndex = unescape(region.replace(/\+/g," "));
 
                         document.getElementById(quale+':region_id').selectedIndex = unescape(region.replace(/\+/g," "));
+
+
+                        setTimeout(function() { document.getElementById(quale+':street2').focus(); }, 1);
     				}
     			});
 

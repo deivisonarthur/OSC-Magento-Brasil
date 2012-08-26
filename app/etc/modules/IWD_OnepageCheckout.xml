@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<config>
-    <modules>
-        <IWD_OnepageCheckout>
-            <active>true</active>
-            <codePool>local</codePool>
-        </IWD_OnepageCheckout>
-    </modules>
-</config>

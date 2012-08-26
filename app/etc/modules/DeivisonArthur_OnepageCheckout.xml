@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+    <modules>
+        <DeivisonArthur_OnepageCheckout>
+            <active>true</active>
+            <codePool>local</codePool>
+        </DeivisonArthur_OnepageCheckout>
+    </modules>
+</config>

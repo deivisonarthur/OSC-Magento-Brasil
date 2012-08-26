@@ -139,32 +139,19 @@ if ($jquery !== '0') :
             ?>
             	 <li>
             	 	<?php
-            	 		$attribute1 = Mage::getModel('eav/config')->getAttribute('customer','tipopessoa');
+            	 		$attribute = Mage::getModel('eav/config')->getAttribute('customer','tipopessoa');
             	 	?>
                     <label for="tipopessoa" <?php if ( $tipopessoa  === 'required' ){ echo 'class="required"'; }?> > <?php if ( $tipopessoa  === 'required' ){ echo '<em>*</em>'; }?>  <?php echo $this->__('Tipo Pessoa') ?></label>
                     <div class="input-box">
                         <select name="tipopessoa" id="tipopessoa" <?php if ( $tipopessoa  === 'required' ){ echo 'class="required"'; }?> >
-
-                        	<?php
-                            if (version_compare(Mage::getVersion(), '1.7.0.2', '>=')){
-                                 $options = $attribute->getSource()->getAllOptions();
-                        		 foreach($options as $option){
-                        	?>
-                        		<option value='<?php echo $option['value']?>' <?php if($this->getCustomer()->getTipopessoa() == $option['value']){ echo 'selected="selected"';}?>><?php echo $this->__($option['label'])?></option>
-                        	<?php };
-                            }else{ ?>
-                                 <option value='' >Escolha a opcao</option>
-                                 <option value='1' >Fisica</option>
-                                 <option value='2' >Juridica</option>
-                                 <option value='3' >Outros</option>
-                            <?php
-                            }
-                            ?>
-
+                                 <option value=''>Escolha a opcao</option>
+                                 <option value='Fisica'>Fisica</option>
+                                 <option value='Juridica'>Juridica</option>
+                                 <option value='Outros'>Outros</option>
                         </select>
                         <script type="text/javascript">
 						//<![CDATA[
-                            $j('#tipopessoa').children('option').eq(<?php echo @$this->htmlEscape($this->getCustomer()->getTipopessoa()) ?>).attr('selected', 'selected');
+                            $j('#tipopessoa').children("option:contains('<?php echo $this->htmlEscape($this->getCustomer()->getTipopessoa()) ?>')").attr('selected', 'selected');
 						//]]>
 						</script>                        
                     </div>

@@ -1,0 +1,678 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <iwd>
+            <label>One Step Checkout Brasil</label>
+            <sort_order>200</sort_order>
+        </iwd>
+    </tabs>
+    <sections>
+        <onepagecheckout translate="label" module="onepagecheckout">
+            <label><![CDATA[ <div style="height: 33px; "><img src="http://onestepcheckout.com.br/img/cartOSC.png" style="float:left; "/><div style="padding-top:8px; width: 220px">&nbsp;One Step Checkout <sup>v3.0.2</sup></div></div>]]></label>
+            <tab>iwd</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>10</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label" module="core">
+                    <label>Visite onestepcheckout.com.br</label>
+    				 <comment>
+    				 	<![CDATA[
+    				 	<div>
+    					 	<a style="width: 439px; height: 88px; display: block; float: left" href="http://onestepcheckout.com.br" target="_blank" style="float: left;"><img src="http://onestepcheckout.com.br/img/osc-brasil-adm.png" /></a>
+                            <div style="width: 439px; height: 88px; display: block; float: left; padding-left: 35px; padding-top:37px">
+                                <label style="font-size: 34px">Vers&atilde;o: <strong>Final V3.0.2</strong></label>
+                            </div>
+
+                            <br style="clear: both;"/>
+
+                            <hr>
+                            <br /><br />
+    					 	<p>
+    						 	Conhe&ccedil;a o Projeto OSC-Magento-Brasil. O m&oacute;dulo One Step Checkout normatizado para a localiza&ccedil;&atilde;o brasileira, &eacute; gratuito e funciona nas vers&otilde;es acima de 1.4 do Magento! O Checkout em Um Passo &eacute; oque faltava para a comunidade brasileira Magento.
+                                <br /><br />
+    						 	<h2>Mantido por: <a href="http://www.deivison.com.br/" target="_blank">Deivison Arthur</a> e <a href="http://www.xpdev.com.br/" target="_blank">Denis Colli Spalenza</a></h2>
+    						</p>
+                            <br /><br />
+                                 <h2>GOSTOU DO MODULO?</h2>
+                                 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++<br />
+                                 Se voce gostou, se foi util para voce, se fez voce economizar aquela grana pois estava prestes a pagar caro por aquele modulo pago, pois nao achava uma<br />
+                                 solucao gratuita que te atendesse e queira prestigiar o trabalho feito efetuando uma doacao de qualquer valor, nao vou negar e vou ficar grato! voce<br />
+                                 pode fazer isso visitando a pagina do projeto em: <a href="http://onestepcheckout.com.br" target="_blank">http://onestepcheckout.com.br</a><br />
+                                 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                            <br /><br /><br /><br /><hr>
+    				 	</div>
+    				 	]]></comment>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label" module="core">
+                            <label>Habilitado</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+
+                        <jquery translate="label" module="onepagecheckout">
+                            <label>Permitir biblioteca Jquery do OSC?</label>
+                            <comment>obs: A biblioteca jquery roda em modo no conflict ($j) Ao desativar essa biblioteca desativara tambem os scripts de valicao do formulario!</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>9</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </jquery>
+
+
+
+                        <tracoativo translate="label" module="onepagecheckout">
+                            <label>Permitir formatacao do campo CEP?</label>
+                            <comment>obs: Coloca o "-" no CEP, porem se estiver trabalhando com o modulo Matrix Rates nao trabalha com o "-"</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>9</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </tracoativo>
+
+
+
+
+
+                        <title translate="label" module="cms">
+                            <label>Titulo da pagina</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title>
+<!--                        <shipping_method translate="label" module="onepagecheckout">
+                            <label>Default Shipping Method</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_shipping_allmethods</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </shipping_method>-->
+                        <payment_method translate="label" module="onepagecheckout">
+                            <label>Metodo de pagamento default</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_payment_allmethods</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </payment_method>
+                        <country translate="label" module="onepagecheckout">
+                            <label>Pais Default</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_country</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </country>
+
+
+
+
+                        <guest_checkout translate="label" module="checkout">
+                            <label>Permintir compra por anonimo</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </guest_checkout>
+
+
+
+                        <guest_checkout1 translate="label" module="checkout">
+                            <label>Exibir login padrao do OSC</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>61</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </guest_checkout1>
+
+                        <guest_checkout2 translate="label" module="checkout">
+                            <label>Exibir login padrao do Magento</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>62</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </guest_checkout2>
+
+
+                        <habilitarcad translate="label" module="onepagecheckout">
+                            <label>Ocultar cadastro do usuario?</label>
+                            <comment>obs: Opcao valida caso o [Exibir login padrao do Magento] esteja ativo</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>9</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </habilitarcad>
+
+
+                        <shipping_address translate="label" module="onepagecheckout">
+                            <label>Permitir entrega em outro endereco?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </shipping_address>
+                        <newsletter_checkbox translate="label" module="onepagecheckout">
+                            <label>Exibir campo: Receba nossas novidades?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </newsletter_checkbox>
+                        <comment translate="label" module="onepagecheckout">
+                            <label>Permitir comentarios?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </comment>
+
+                    </fields>
+                </general>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <address_form translate="label comment">
+                    <label>Configuracao dos campos</label>
+                    <comment>Before changing some of the fields, be sure that your payment/shipping provider does not require them</comment>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>30</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+
+
+
+                        <cpfcnpjtaxvat translate="label" module="checkout">
+                            <label>CPF/CNPJ pelo Taxvat</label>
+                            <comment>Esse campo so funciona as opcoes (Nao exibir campo) e (Obrigatorio)</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>onepagecheckout_adminhtml/system_config_source_addressOptions</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </cpfcnpjtaxvat>
+
+                        <cpfcnpj translate="label" module="checkout">
+                            <label>CPF/CNPJ pelo campo cpfcnpj</label>
+                            <comment>Esse campo so funciona as opcoes (Nao exibir campo) e (Obrigatorio)</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>onepagecheckout_adminhtml/system_config_source_addressOptions</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </cpfcnpj>
+
+
+
+
+
+                        <tipopessoa translate="label" module="checkout">
+                            <label>Tipo Pessoa</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>onepagecheckout_adminhtml/system_config_source_addressOptions</source_model>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </tipopessoa>
+
+
+
+
+
+                        <ie translate="label" module="checkout">
+                            <label>IE (Inscricao Estadual)</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>onepagecheckout_adminhtml/system_config_source_addressOptions</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </ie>
+
+
+
+
+                        <company translate="label" module="checkout">
+                            <label>Company</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>onepagecheckout_adminhtml/system_config_source_addressOptions</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </company>
+
+
+
+
+
+                        <rgi translate="label" module="checkout">
+                            <label>Identidade (RG)</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>onepagecheckout_adminhtml/system_config_source_addressOptions</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </rgi>
+
+
+
+                        <zip translate="label" module="checkout">
+                            <label>Zip/Postal Code</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>onepagecheckout_adminhtml/system_config_source_addressOptions</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </zip>
+
+
+
+                        <address translate="label" module="checkout">
+                            <label>Address</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>onepagecheckout_adminhtml/system_config_source_addressOptions</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </address>
+
+                        <address2 translate="label" module="checkout">
+                            <label>Numero</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>onepagecheckout_adminhtml/system_config_source_addressOptions</source_model>
+                            <sort_order>61</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </address2>
+
+                        <address3 translate="label" module="checkout">
+                            <label>Complemento</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>onepagecheckout_adminhtml/system_config_source_addressOptions</source_model>
+                            <sort_order>62</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </address3>
+
+                        <address4 translate="label" module="checkout">
+                            <label>Bairro</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>onepagecheckout_adminhtml/system_config_source_addressOptions</source_model>
+                            <sort_order>63</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </address4>
+
+
+                        <state translate="label" module="checkout">
+                            <label>State/Province</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>onepagecheckout_adminhtml/system_config_source_addressOptions</source_model>
+                            <sort_order>64</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </state>
+
+
+                        <city translate="label" module="checkout">
+                            <label>City</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>onepagecheckout_adminhtml/system_config_source_addressOptions</source_model>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </city>
+                        <country translate="label" module="checkout">
+                            <label>Country</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>onepagecheckout_adminhtml/system_config_source_addressOptions</source_model>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </country>
+
+                        <sexo translate="label" module="checkout">
+                            <label>Sexo</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>onepagecheckout_adminhtml/system_config_source_addressOptions</source_model>
+                            <sort_order>91</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sexo>
+
+                        <aniversario translate="label" module="checkout">
+                            <label>Data de Aniversario</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>onepagecheckout_adminhtml/system_config_source_addressOptions</source_model>
+                            <sort_order>92</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </aniversario>
+
+
+                        <phone translate="label" module="checkout">
+                            <label>Telephone</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>onepagecheckout_adminhtml/system_config_source_addressOptions</source_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </phone>
+                        <fax translate="label" module="checkout">
+                            <label>Fax</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>onepagecheckout_adminhtml/system_config_source_addressOptions</source_model>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </fax>
+
+
+
+                        <celular translate="label" module="checkout">
+                            <label>Celular</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>onepagecheckout_adminhtml/system_config_source_addressOptions</source_model>
+                            <sort_order>111</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </celular>
+
+
+                     </fields>
+                </address_form>
+
+
+
+
+
+
+
+
+                <outrasopcoes translate="label">
+                    <label>Outras opcoes</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>40</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+
+
+                        <cpfcnpjregistro translate="label" module="checkout">
+                            <label>CPF/CNPJ no cadastro do usuario?</label>
+                            <comment>Esse campo so funciona as opcoes (Nao exibir campo) e (Obrigatorio)</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>onepagecheckout_adminhtml/system_config_source_addressOptions</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </cpfcnpjregistro>
+
+
+
+
+
+                        <tipopessoaregistro translate="label" module="checkout">
+                            <label>Tipo Pessoa no cadastro do usuario?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>onepagecheckout_adminhtml/system_config_source_addressOptions</source_model>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </tipopessoaregistro>
+
+
+
+
+
+                        <ieregistro translate="label" module="checkout">
+                            <label>IE (Inscricao Estadual) no cadastro do usuario?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>onepagecheckout_adminhtml/system_config_source_addressOptions</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </ieregistro>
+
+
+
+
+                        <companyregistro translate="label" module="checkout">
+                            <label>Empresa no cadastro do usuario?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>onepagecheckout_adminhtml/system_config_source_addressOptions</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </companyregistro>
+
+
+
+
+
+                        <rgiregistro translate="label" module="checkout">
+                            <label>Identidade no cadastro do usuario?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>onepagecheckout_adminhtml/system_config_source_addressOptions</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </rgiregistro>
+
+
+
+
+
+
+<!--
+                        <nomeentrega translate="label" module="checkout">
+                            <label>Nome Completo</label>
+                            <comment>Este campo se refere a pessoa que sera entregue o produto</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>onepagecheckout_adminhtml/system_config_source_addressOptions</source_model>
+                            <sort_order>41</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </nomeentrega>
+
+-->
+
+
+
+                        <rgientrega translate="label" module="checkout">
+                            <label>Identidade (RG)</label>
+                            <comment>Este campo se refere a pessoa que sera entregue o produto</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>onepagecheckout_adminhtml/system_config_source_addressOptions</source_model>
+                            <sort_order>42</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </rgientrega>
+
+
+
+                        <cpfentrega translate="label" module="checkout">
+                            <label>CPF/CNPJ</label>
+                            <comment>Este campo se refere a pessoa que sera entregue o produto</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>onepagecheckout_adminhtml/system_config_source_addressOptions</source_model>
+                            <sort_order>42</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </cpfentrega>
+
+
+                    </fields>
+                </outrasopcoes>
+
+
+
+
+
+
+
+
+
+
+                <agreements translate="label" module="checkout">
+                    <label>Terms and Conditions</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>50</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enable Terms and Conditions</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <output translate="label" module="onepagecheckout">
+                            <label>Output Type</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>onepagecheckout_adminhtml/system_config_source_agreementOptions</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </output>
+                    </fields>
+                </agreements>
+
+
+
+
+                <geo_ip translate="label">
+                    <label>GeoIP</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>90</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <country translate="label">
+                            <label>Enable Country Detection</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </country>
+                        <country_file translate="label comment">
+                            <label>GeoIp filename</label>
+                            <comment><![CDATA[<a href='http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz' title='Download GeoIP database'>Download</a> and unzip file under the 'MAGETO_ROOT/lib/MaxMind/GeoIP/data' folder if you don't have it]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </country_file>
+                        <city translate="label">
+                            <label>Enable City Detection</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </city>
+                        <city_file translate="label comment">
+                            <label>GeoCity filename</label>
+                            <comment><![CDATA[<a href='http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz' title='Download GeoCity database'>Download</a> and unzip file under the 'MAGETO_ROOT/lib/MaxMind/GeoIP/data' folder if you don't have it]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </city_file>
+                    </fields>
+                </geo_ip>
+
+
+
+            </groups>
+        </onepagecheckout>
+    </sections>
+</config>
