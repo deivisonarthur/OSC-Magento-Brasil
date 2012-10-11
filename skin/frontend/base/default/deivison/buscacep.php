@@ -59,7 +59,9 @@ function simple_curl($url,$post=array(),$get=array()){
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	return curl_exec ($ch);
 }
-
+if(!isset($_GET['cep']) OR empty($_GET['cep'])){
+    exit;
+}
 ///////////////////////////////////////////////////
 //MONTA URL A SER EXPLORADA
 ///////////////////////////////////////////////////
@@ -90,8 +92,8 @@ $dados =
 //SEPARA A CIDADE DA UF DO RESULTADO ACIMA
 ///////////////////////////////////////////////////
   $dados['cidade/uf'] = explode('/',$dados['cidade/uf']);
-  $dados['cidade'] = trim($dados['cidade/uf'][0]);
-  $dados['uf'] = trim($dados['cidade/uf'][1]);
+  $dados['cidade'] = trim(@$dados['cidade/uf'][0]);
+  $dados['uf'] = trim(@$dados['cidade/uf'][1]);
   unset($dados['cidade/uf']);
 
 ///////////////////////////////////////////////////
@@ -170,7 +172,7 @@ if ( isset($dados) ) {
             ('BR', 'TO', 'Tocantins'),
             ('BR', 'DF', 'Distrito Federal');
 */
-        $texto = $dados['logradouro'].":".$dados['bairro'].":".$dados['cidade'].":".$estado.":".$num.";";
+        $texto = $dados['logradouro'].":".$dados['bairro'].":".$dados['cidade'].":".@$estado.":".@$num.";";
         echo $texto;
 
 }else {
