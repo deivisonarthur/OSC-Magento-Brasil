@@ -544,7 +544,7 @@ $has_addr	= $this->customerHasAddresses();
 
       var temcep = $j('input[name*="[postcode]"]').val();
       if(temcep != ""){
-          buscarEndereco('http://onestepcheckout.com.br/beta3/skin/','billing');
+          buscarEndereco('<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN);?>','billing');
       }
 
 //]]>
