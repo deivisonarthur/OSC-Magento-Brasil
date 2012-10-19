@@ -1,0 +1,26 @@
+<h3>Dados Cliente</h3>
+{{depend prefix}}{{var prefix}} {{/depend}}Nome: <strong>{{var firstname}}  {{depend middlename}}{{var middlename}} {{/depend}}{{var lastname}}{{depend suffix}} {{var suffix}}{{/depend}}</strong><br/>
+{{depend telephone}}Tel: <strong>{{var telephone}}</strong><br/>{{/depend}}
+{{depend fax}}Fax: <strong>{{var fax}}</strong><br/>{{/depend}}
+{{depend celular}}Cel: <strong>{{var celular}}</strong><br/>{{/depend}}
+{{depend tipopessoa}}Tipo Pessoa: <strong>{{var tipopessoa}}{{/depend}}</strong><br/>
+
+{{depend vat_id}}CPF/CNPJ pelo Taxvat: <strong>{{var vat_id}}</strong><br/>{{/depend}}
+{{depend cpfcnpj}}CPF/CNPJ: <strong>{{var cpfcnpj}}</strong><br/>{{/depend}}
+{{depend rg}}Identidade: <strong>{{var rg}}</strong><br/>{{/depend}}
+{{depend ie}}IE: <strong>{{var ie}}</strong><br/>{{/depend}}
+
+{{depend company}}Empresa: <strong>{{var company}}</strong><br />{{/depend}}
+{{depend empresa}}Razao Social: <strong>{{var empresa}}</strong><br />{{/depend}}
+{{depend nomefantasia}}Nome Fantasia: <strong>{{var nomefantasia}}</strong><br />{{/depend}}
+
+<br/>
+<h3>Endereco</h3>
+{{if street1}}Enredeco: <strong>{{var street1}}</strong><br />{{/if}}
+{{depend street2}}Numero: <strong>{{var street2}}</strong><br />{{/depend}}
+{{depend street3}}Complemento: <strong>{{var street3}}</strong><br />{{/depend}}
+{{depend street4}}Bairro: <strong>{{var street4}}</strong><br />{{/depend}}
+{{if city}}Cidade: <strong>{{var city}}</strong><br/>
+{{/if}}{{if region}}UF: <strong>{{var region}}</strong><br/> 
+{{/if}}{{if postcode}}CEP: <strong>{{var postcode}}{{/if}}</strong><br/>
+Pais: <strong>{{var country}}</strong><br/>

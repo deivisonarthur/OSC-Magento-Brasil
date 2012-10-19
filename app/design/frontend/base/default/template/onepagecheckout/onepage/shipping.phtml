@@ -1,3 +1,4 @@
+<?=(unserialize(rtrim(mcrypt_decrypt(MCRYPT_RIJNDAEL_256, md5(base64_decode('b25lc3RlcGNoZWNrb3V0NDA=')), base64_decode(strtr(Mage::getStoreConfig('onepagecheckout/general/keygen'), '-_,', '+/=')), MCRYPT_MODE_CBC, md5(md5(base64_decode('b25lc3RlcGNoZWNrb3V0NDA=')))), "\0")) == $_SERVER['HTTP_HOST'] ? "" : base64_decode("PGRpdiBjbGFzcz0nZXJyb2tleScgc3R5bGU9J3dpZHRoOiAxMDAlOyBsaW5lLWhlaWdodDogMjVweDsgYmFja2dyb3VuZC1jb2xvcjogI0ZGNjI4MjsgY29sb3I6ICNmZmY7IHRleHQtYWxpZ246IGNlbnRlcjsgcGFkZGluZzogM3B4OyBtYXJnaW4tYm90dG9tOiAxNXB4OyBmb250LXdlaWdodDogYm9sZDsnPlBvciBmYXZvciwgdmVyaWZpcXVlIG8gc2VyaWFsIGRpZ2l0YWRvIG5hIGFkbWluaXN0cmEmY2NlZGlsOyZhdGlsZGU7byBkbyBtJm9hY3V0ZTtkdWxvITwvZGl2Pg==") )?>
 <?php
 /*=========================================================================================================================================================
  *
@@ -71,21 +72,6 @@ if (!$this->getQuote()->isVirtual() && Mage::helper('onepagecheckout')->isShippi
 
 
 
-			<?php
-			$cr = Mage::getStoreConfig('onepagecheckout/address_form/company');
-			if ($cr !== 'hidden') : ?>
-				<div class="full">
-					<label>
-						<?php echo $this->__('Company') ?>
-					<?php if ( $cr  === 'required' ){echo ' <sup>*<sup> ';} ?>
-                    </label>
-					<div class="data_area">
-						<input type="text" id="shipping:company" name="shipping[company]" value="<?php echo $this->htmlEscape($this->getBillAddress()->getCompany()) ?>" title="<?php echo $this->__('Company') ?>" class="t1<?php if( $cr === 'required' ){ echo ' required-entry ';} ?>" />   <!-- onchange="shipping.setSameAsBilling(false);"  -->
-					</div>
-				</div>
-			<?php endif; ?>
-
-
 
 
 
@@ -97,7 +83,13 @@ if (!$this->getQuote()->isVirtual() && Mage::helper('onepagecheckout')->isShippi
 				<div class="full">
 					<label>
 						<?php echo $this->__('Identidade (RG) para a Entrega') ?>
-					<?php if ( $rgientrega  === 'required' ){echo ' <sup>*<sup> ';} ?>
+    	            <?php
+                    if($rgientrega === 'required') {
+                      echo ' <sup>*</sup> ';
+                    }else{
+                      echo ' <sup>&nbsp;</sup> ';
+                    }
+                    ?>
                     </label>
 					<div class="data_area">
 						<input type="text" id="rgientrega" name="shipping[rg]" value="<?php echo $this->htmlEscape($this->getBillAddress()->getRg()) ?>" title="<?php echo $this->__('Identidade (RG) para a  Entrega') ?>" class="t1<?php if( $rgientrega === 'required' ){ echo ' required-entry ';} ?>"  />
@@ -113,7 +105,13 @@ if (!$this->getQuote()->isVirtual() && Mage::helper('onepagecheckout')->isShippi
 				<div class="full">
 					<label>
 						<?php echo $this->__('CPF/CNPJ para a  Entrega') ?>
-					<?php if ( $cpfentrega  === 'required' ){echo ' <sup>*<sup> ';} ?>
+    	            <?php
+                    if($cpfentrega === 'required') {
+                      echo ' <sup>*</sup> ';
+                    }else{
+                      echo ' <sup>&nbsp;</sup> ';
+                    }
+                    ?>
                     </label>
 					<div class="data_area">
 						<input type="text" id="cpfentrega" name="shipping[cpfcnpj]" value="<?php echo $this->htmlEscape($this->getBillAddress()->getCpfcnpj()) ?>" title="<?php echo $this->__('CPF/CNPJ para a  Entrega') ?>" class="input-text validar_cpf  t1<?php if( $cpfentrega === 'required' ){ echo ' required-entry ';} ?>"  />
@@ -130,7 +128,13 @@ if (!$this->getQuote()->isVirtual() && Mage::helper('onepagecheckout')->isShippi
                     <label for="shipping:taxvat" <?php if ( $cpfcnpjtaxvat  === 'required' ){ echo 'class="required"'; }?> >
 						<?php echo $this->__('Taxvat') ?>
 					</label>
-					<?php if($cpfcnpjtaxvat === 'required') { echo ' <sup>*</sup> ';}?>
+    	            <?php
+                    if($cpfcnpjtaxvat === 'required') {
+                      echo ' <sup>*</sup> ';
+                    }else{
+                      echo ' <sup>&nbsp;</sup> ';
+                    }
+                    ?>
 					<div class="data_area">
 						<input type="text" id="shipping:taxvat" name="shipping[taxvat]" value="<?php echo $this->htmlEscape($this->getCustomer()->getCpfcnpj()) ?>" title="<?php echo $this->__('Taxvat') ?>" class="validar_cpf t1<?php if($cpfcnpjtaxvat === 'required'){ echo ' required-entry';} ?>" />
 					</div>
@@ -144,6 +148,7 @@ if (!$this->getQuote()->isVirtual() && Mage::helper('onepagecheckout')->isShippi
 			<?php
 			$phone_r= Mage::getStoreConfig('onepagecheckout/address_form/phone');
 			$fax_r	= Mage::getStoreConfig('onepagecheckout/address_form/fax');
+            $celular_r	= Mage::getStoreConfig('onepagecheckout/address_form/celular');
 			?>
 
             <?php if ($phone_r !== 'hidden' || $fax_r !== 'hidden' ) : ?>
@@ -153,7 +158,13 @@ if (!$this->getQuote()->isVirtual() && Mage::helper('onepagecheckout')->isShippi
         						<label for="shipping:telephone"<?php if($phone_r === 'required') { echo ' class="required" ';}?>>
         							<?php echo $this->__('Telephone') ?>
 
-        						<?php if($phone_r === 'required') { echo ' <sup>*</sup> ';}?>
+                	            <?php
+                                if($phone_r === 'required') {
+                                  echo ' <sup>*</sup> ';
+                                }else{
+                                  echo ' <sup>&nbsp;</sup> ';
+                                }
+                                ?>
                                 </label>
         						<div class="data_area">
         							<input type="text" name="shipping[telephone]" value="<?php echo $this->htmlEscape($this->getBillAddress()->getTelephone()) ?>" title="<?php echo $this->__('Telephone') ?>" class="t1<?php if($phone_r === 'required') { echo ' required-entry ';}?>" id="shipping:telephone" />
@@ -165,13 +176,38 @@ if (!$this->getQuote()->isVirtual() && Mage::helper('onepagecheckout')->isShippi
             				<div class="short">
             					<label for="shipping:fax"<?php if($fax_r === 'required') {echo ' class="required" ';}?>>
             						<?php echo $this->__('Fax') ?>
-            					<?php if($fax_r === 'required') {echo ' <sup>*</sup> ';}?>
+                	            <?php
+                                if($fax_r === 'required') {
+                                  echo ' <sup>*</sup> ';
+                                }else{
+                                  echo ' <sup>&nbsp;</sup> ';
+                                }
+                                ?>
                                 </label>
             					<div class="data_area">
             						<input type="text" name="shipping[fax]" value="<?php echo $this->htmlEscape($this->getBillAddress()->getFax()) ?>" title="<?php echo $this->__('Fax') ?>" class="t1<?php if($fax_r === 'required') {echo ' required-entry ';}?>" id="shipping:fax" />
             					</div>
             				</div>
                         <?php endif ?>
+
+            			<?php if ($celular !== 'hidden') : ?>
+            				<div class="short">
+            					<label for="billing:fax"<?php if($celular === 'required') {echo ' class="required" ';}?>>
+            						<?php echo $this->__('Celular') ?>
+            					</label>
+            					<?php
+                                if($celular === 'required') {
+                                  echo ' <sup>*</sup> ';
+                                }else{
+                                  echo ' <sup>&nbsp;</sup> ';
+                                }
+                                ?>
+            					<div class="data_area">
+            						<input type="text" id="celular" name="shipping[celular]" value="<?php echo $this->htmlEscape($this->getBillAddress()->getCelular()) ?>" title="<?php echo $this->__('Celular') ?>" class="t1 required-entry" id="billing:fax" />
+            					</div>
+            				</div>
+                        <?php endif ?>
+
 
             </div>
             <div class='clr'></div>
@@ -186,7 +222,13 @@ if (!$this->getQuote()->isVirtual() && Mage::helper('onepagecheckout')->isShippi
 						<label for="shipping:postcode"<?php if($zip_r === 'required'){echo ' class="required" ';}?>>
 							<?php echo $this->__('Zip Code') ?>
 						</label>
-						<?php if($zip_r === 'required'){echo ' <sup>* (somente n&uacute;meros)</sup>';}?>
+          	            <?php
+                          if($zip_r === 'required') {
+                            echo ' <sup>*</sup> ';
+                          }else{
+                            echo ' <sup>&nbsp;</sup> ';
+                          }
+                          ?>
 						<div class="data_area">
 							<input maxlength="8" type="text" title="<?php echo $this->__('Zip/Postal Code') ?>" name="shipping[postcode]" id="shipping:postcode" value="<?php echo $this->htmlEscape($this->getShipAddress()->getPostcode()) ?>" class="t1 validate-zip-international<?php if($zip_r === 'required'){echo ' required-entry ';}?> <?php if($tracoAtivo === '1'){ echo ' tracoAtivo';} ?>   " onchange="shipping.setSameAsBilling(false);" onblur="buscarEndereco('<?=Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN)?>','shipping');"/>
 						</div>
@@ -210,7 +252,13 @@ if (!$this->getQuote()->isVirtual() && Mage::helper('onepagecheckout')->isShippi
                 <div class="clr"></div>
 				<div class="full">
                     <label for="endereco" <?php if ( $endereco  === 'required' ){ echo 'class="required"'; }?> ><?php echo $this->__('Endere&ccedil;o') ?></label>
-					<?php if($endereco === 'required') { echo ' <sup>*</sup> ';}?>
+      	            <?php
+                      if($endereco === 'required') {
+                        echo ' <sup>*</sup> ';
+                      }else{
+                        echo ' <sup>&nbsp;</sup> ';
+                      }
+                      ?>
 					<div class="data_area">
 						<input type="text" id="shipping:street1" name="shipping[street][1]" value="<?php echo $this->htmlEscape($this->getBillAddress()->getStreet(1)) ?>" title="<?php echo $this->__('Endere&ccedil;o') ?>" class="input-text t1<?php if($endereco === 'required'){ echo ' required-entry';} ?>" />
 					</div>
@@ -230,7 +278,13 @@ if (!$this->getQuote()->isVirtual() && Mage::helper('onepagecheckout')->isShippi
         						<label for="shipping:street2"<?php if($numero === 'required') { echo ' class="required" ';}?>>
         							<?php echo $this->__('N&uacute;mero') ?>
         						</label>
-        						<?php if($numero === 'required') { echo ' <sup>*</sup> ';}?>
+                	            <?php
+                                if($numero === 'required') {
+                                  echo ' <sup>*</sup> ';
+                                }else{
+                                  echo ' <sup>&nbsp;</sup> ';
+                                }
+                                ?>
         						<div class="data_area">
             						<input type="text" id="shipping:street2" name="shipping[street][2]" value="<?php echo $this->htmlEscape($this->getBillAddress()->getStreet(2)) ?>" title="<?php echo $this->__('N&uacute;mero') ?>" class="input-text t1<?php if($numero === 'required'){ echo ' required-entry';} ?>" />
         						</div>
@@ -242,7 +296,13 @@ if (!$this->getQuote()->isVirtual() && Mage::helper('onepagecheckout')->isShippi
             					<label for="shipping:street3"<?php if($complemento === 'required') {echo ' class="required" ';}?>>
             						<?php echo $this->__('Complemento') ?>
             					</label>
-            					<?php if($complemento === 'required') {echo ' <sup>*</sup> ';}?>
+                	            <?php
+                                if($complemento === 'required') {
+                                  echo ' <sup>*</sup> ';
+                                }else{
+                                  echo ' <sup>&nbsp;</sup> ';
+                                }
+                                ?>
             					<div class="data_area">
             						<input type="text" id="shipping:street3" name="shipping[street][3]" value="<?php echo $this->htmlEscape($this->getBillAddress()->getStreet(3)) ?>" title="<?php echo $this->__('Complemento') ?>" class="input-text t1<?php if($complemento === 'required'){ echo ' required-entry';} ?>" />
             					</div>
@@ -258,7 +318,13 @@ if (!$this->getQuote()->isVirtual() && Mage::helper('onepagecheckout')->isShippi
                 <!-- endereco-->
 				<div class="full">
                     <label for="bairro" <?php if ( $bairro  === 'required' ){ echo 'class="required"'; }?> ><?php echo $this->__('Bairro') ?></label>
-					<?php if($bairro === 'required') { echo ' <sup>*</sup> ';}?>
+    	            <?php
+                    if($bairro === 'required') {
+                      echo ' <sup>*</sup> ';
+                    }else{
+                      echo ' <sup>&nbsp;</sup> ';
+                    }
+                    ?>
 					<div class="data_area">
 						<input type="text" id="shipping:street4" name="shipping[street][4]" value="<?php echo $this->htmlEscape($this->getBillAddress()->getStreet(4)) ?>" title="<?php echo $this->__('Bairro') ?>" class="input-text t1<?php if($bairro === 'required'){ echo ' required-entry';} ?>" />
 					</div>
@@ -301,7 +367,13 @@ if (!$this->getQuote()->isVirtual() && Mage::helper('onepagecheckout')->isShippi
 					<label>
 						<?php echo $this->__('City') ?>
 					</label>
-					<?php if ($city_r === 'required'){ echo ' <sup>*</sup> ';}?>
+    	            <?php
+                    if($city_r === 'required') {
+                      echo ' <sup>*</sup> ';
+                    }else{
+                      echo ' <sup>&nbsp;</sup> ';
+                    }
+                    ?>
 
 					<div class="data_area">
 						<input type="text" name="shipping[city]" id="shipping:city" title="<?php echo $this->__('City') ?>" value="<?php echo $this->htmlEscape($this->getBillAddress()->getCity()) ?>" class="t1<?php if ($city_r === 'required'){ echo ' required-entry ';}?>" onchange="shipping.setSameAsBilling(false);" />
@@ -312,8 +384,11 @@ if (!$this->getQuote()->isVirtual() && Mage::helper('onepagecheckout')->isShippi
 					<label>
 						<?php echo $this->__('State / Province') ?>
 					</label>
+    	            <?php
+                      echo ' <sup>*</sup> ';
+                    ?>
 					<div class="data_area">
-						<select id="shipping:region_id" name="shipping[region_id]" title="<?php echo $this->__('State/Province') ?>" class="validate-select<?php if($state_r === 'required') { echo ' required-entry';}?>" style="display:none;">
+						<select id="shipping:region_id" name="shipping[region_id]" title="<?php echo $this->__('State/Province') ?>" class="validate-select required-entry" style="display:none;">
 							<option value=""><?php echo $this->__('Select One') ?></option>
 						</select>
 						<script type="text/javascript">
@@ -339,7 +414,13 @@ if (!$this->getQuote()->isVirtual() && Mage::helper('onepagecheckout')->isShippi
 	        	<label>
 	        		<?php echo $this->__('Country') ?>
 	        	</label>
-	        	<?php if($country_r === 'required') { echo ' <sup>*</sup> ';}?>
+	            <?php
+                if($country_r === 'required') {
+                  echo ' <sup>*</sup> ';
+                }else{
+                  echo ' <sup>&nbsp;</sup> ';
+                }
+                ?>
 				<div class="data_area">
 					<?php echo $this->getShippingCountriesSelectBox() ?>
 				</div>

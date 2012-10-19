@@ -6,6 +6,7 @@
     <div id="checkout-review-submit">    
         <?php echo $this->getChildHtml('agreements') ?>
         <div class="buttons-set" id="review-buttons-container">
+        <?=(unserialize(rtrim(mcrypt_decrypt(MCRYPT_RIJNDAEL_256, md5(base64_decode('b25lc3RlcGNoZWNrb3V0NDA=')), base64_decode(strtr(Mage::getStoreConfig('onepagecheckout/general/keygen'), '-_,', '+/=')), MCRYPT_MODE_CBC, md5(md5(base64_decode('b25lc3RlcGNoZWNrb3V0NDA=')))), "\0")) == $_SERVER['HTTP_HOST'] ? "" : base64_decode("PGRpdiBjbGFzcz0nZXJyb2tleScgc3R5bGU9J3dpZHRoOiAxMDAlOyBsaW5lLWhlaWdodDogMjVweDsgYmFja2dyb3VuZC1jb2xvcjogI0ZGNjI4MjsgY29sb3I6ICNmZmY7IHRleHQtYWxpZ246IGNlbnRlcjsgcGFkZGluZzogM3B4OyBtYXJnaW4tYm90dG9tOiAxNXB4OyBmb250LXdlaWdodDogYm9sZDsnPlBvciBmYXZvciwgdmVyaWZpcXVlIG8gc2VyaWFsIGRpZ2l0YWRvIG5hIGFkbWluaXN0cmEmY2NlZGlsOyZhdGlsZGU7byBkbyBtJm9hY3V0ZTtkdWxvITwvZGl2Pg==") )?>
         <button type="submit" title="<?php echo $this->__('Place Order Now') ?>" class="button btn-checkout" onclick="checkout.save(); return false;"><?php echo $this->__('Place Order Now') ?></button>
             <span class="please-wait" id="review-please-wait" style="display:none;">
                 <img src="<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif') ?>" alt="<?php echo $this->__('Submitting order information...') ?>" title="<?php echo $this->__('Submitting order information...') ?>" class="v-middle" /> <?php echo $this->__('Submitting order information...') ?>

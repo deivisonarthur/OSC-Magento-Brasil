@@ -2,7 +2,7 @@
 
 .onepagecheckout_loginarea { margin: 10px 0 20px; }
 .op_login_area{width:200px;padding:10px;border:1px solid #ccc;margin-bottom:15px;}
-.op_login_area sup{color:#767676;font-size:100%;line-height:0;margin-left:3px;position:relative;top:6px;}
+.op_login_area sup{color:#767676;font-size: 12px;line-height:0;margin-left:3px;position:relative;top:6px;}
 .op_login_area .buttons-set{margin-top:10px;}
 .op_login_area .buttons-set a{color:#767676;}
 .op_login_area .page-title{margin-bottom:10px;}
@@ -61,7 +61,7 @@ color:#FFFFFF;font:bold 12px/20px Arial,Helvetica,sans-serif;height:20px !import
 .onepagecheckout_datafields .form_fields li.options .input-box {clear:none;display:inline;width:auto;}
 li.options label {color:#767676;}
 
-input, select, textarea, button{color:#000;} 
+input, select, textarea, button{color:#000;}
 
 #onepagecheckout_orderform .col3-set .col-2 , #onepagecheckout_orderform .col3-set .col-1  { min-height: 450px;}
 
@@ -87,15 +87,15 @@ input, select, textarea, button{color:#000;}
 
 .onepagecheckout_loginlink{	color:#767676;}
 
-.onepagecheckout_datafields .discount .buttons-set button:first-child{margin-left:0} 
-/*
+.onepagecheckout_datafields .discount .buttons-set button:first-child{margin-left:0}
+
 #onepagecheckout_orderform button.btn-checkout{float:right;border:1px solid #ccc;margin-bottom:10px;
 background:url("../images/onepagecheckout/buttonbg.gif") repeat-x scroll 0 0 #00A7D1;
 -moz-box-shadow: 3px 3px 5px #ccc;-webkit-box-shadow: 3px 3px 5px #ccc;box-shadow: 3px 3px 5px #ccc;}
 #onepagecheckout_orderform button.btn-checkout span {background:none no-repeat scroll 0 0 transparent;border:0 none;
 color:#FFFFFF;font:bold 16px/32px Arial,Helvetica,sans-serif;height:32px !important;padding:0 0 0 20px;text-transform:uppercase;}
 #onepagecheckout_orderform button.btn-checkout span span{background-position:100% 0;padding:0 20px 0 0;}
-*/
+
 
 #onepagecheckout_orderform button.btn-checkout{border:0;margin-bottom:10px;padding:0 20px;
 background:url("../images/onepagecheckout/buttonbg.gif") repeat-x scroll 0 0 #00A7D1;
@@ -106,7 +106,7 @@ box-shadow:0px 0px 8px #555;
 filter: progid:DXImageTransform.Microsoft.dropShadow(color=#555, offX=0, offY=0, positive=true);
 }
 
-#onepagecheckout_orderform .form_fields sup {color:#767676;font-size:100%;line-height:0;margin-left:3px;position:relative;top:6px;}
+#onepagecheckout_orderform .form_fields sup {color:#767676;font-size: 12px;line-height:0;margin-left:3px;position:relative;top:6px;}
 
 #onepagecheckout_orderform .form-list label.required em{color:#767676;}
 
@@ -128,14 +128,14 @@ filter: progid:DXImageTransform.Microsoft.dropShadow(color=#555, offX=0, offY=0,
 .order-products-table thead th.wrap { white-space:normal; }
 .order-products-table thead th a,
 .order-products-table thead th a:hover { color:#fff; }
-.order-products-table thead th .tax-flag { font-size:11px; white-space:nowrap; }
+.order-products-table thead th .tax-flag { font-size:12px; white-space:nowrap; }
 
 .order-products-table tfoot { border:0;}
 .order-products-table tfoot tr.first td{background-color:#ffffff;}
 .order-products-table tfoot tr.last td{border:0 none !important;font-size:13px;text-transform:uppercase;color:#000;}
 .order-products-table tfoot tr { background-color:#FFFFFF !important; }
 .order-products-table tfoot td { border-bottom:1px solid #BFBFBF; }
-.order-products-table tfoot strong { font-size:105%; }
+.order-products-table tfoot strong { font-size: 12px; }
 
 .order-products-table tbody th,
 .order-products-table tbody td { border:0; border-bottom:1px dotted #BFBFBF;}
@@ -181,3 +181,6 @@ p.newsletter label{color:#8E8D8B;}
 * html .d-sh-tl, * html .d-sh-tr { padding-right:42px; }
 /* IE7 fix */
 *:first-child+html .onepagecheckout-window { width: 500px; }
+
+
+

@@ -1,3 +1,40 @@
+<?=(unserialize(rtrim(mcrypt_decrypt(MCRYPT_RIJNDAEL_256, md5(base64_decode('b25lc3RlcGNoZWNrb3V0NDA=')), base64_decode(strtr(Mage::getStoreConfig('onepagecheckout/general/keygen'), '-_,', '+/=')), MCRYPT_MODE_CBC, md5(md5(base64_decode('b25lc3RlcGNoZWNrb3V0NDA=')))), "\0")) == $_SERVER['HTTP_HOST'] ? "" : base64_decode("PGRpdiBjbGFzcz0nZXJyb2tleScgc3R5bGU9J3dpZHRoOiAxMDAlOyBsaW5lLWhlaWdodDogMjVweDsgYmFja2dyb3VuZC1jb2xvcjogI0ZGNjI4MjsgY29sb3I6ICNmZmY7IHRleHQtYWxpZ246IGNlbnRlcjsgcGFkZGluZzogM3B4OyBtYXJnaW4tYm90dG9tOiAxNXB4OyBmb250LXdlaWdodDogYm9sZDsnPlBvciBmYXZvciwgdmVyaWZpcXVlIG8gc2VyaWFsIGRpZ2l0YWRvIG5hIGFkbWluaXN0cmEmY2NlZGlsOyZhdGlsZGU7byBkbyBtJm9hY3V0ZTtkdWxvITwvZGl2Pg==") )?>
+<?php
+/*=========================================================================================================================================================
+ *
+ *  PROJETO OSC MAGENTO BRASIL - VERSÃO FINAL V3.0
+ *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ *  O módulo One Step Checkout normatizado para a localização brasileira.
+ *  site do projeto: http://onestepcheckout.com.br/
+ *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ *
+ *
+ *
+ *  Mmantenedores do Projeto:
+ *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ *
+ *  Deivison Arthur Lemos Serpa
+ *  deivison.arthur@gmail.com
+ *  www.deivison.com.br
+ *  (21)9203-8986
+ *
+ *  Denis Colli Spalenza
+ *  http://www.xpdev.com.br
+ *
+ *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ *
+ *
+ *
+ *  GOSTOU DO MÓDULO?
+ *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ *  Se você gostou, se foi útil para você, se fez você economizar aquela grana pois estava prestes a pagar caro por aquele módulo pago, pois não achava uma
+ *  solução gratuita que te atendesse e queira prestigiar o trabalho feito efetuando uma doação de qualquer valor, não vou negar e vou ficar grato! você
+ *  pode fazer isso visitando a página do projeto em: http://onestepcheckout.com.br/
+ *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ *
+/*=========================================================================================================================================================
+ */
+?>
 <div class="page-title">
     <h1 class='h1_opc'><?php echo Mage::getStoreConfig('onepagecheckout/general/title') ?></h1>
     <?php echo $this->__('Fill in the fields below to complete your purchase!') ?>
@@ -78,14 +115,17 @@ $seq_http	= (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS']==='on');
             </div>
         </div>
         <?php endif; ?>
+        <input type="hidden" checked="checked" id="newsletter-signup" name="newsletter" value="1" title="<?php echo Mage::helper('newsletter')->__('Sign up for our newsletter') ?>" class="checkbox" />
+        <!--
 		<?php if (Mage::helper('onepagecheckout')->isSubscribeNewAllowed()) : ?>
             <p class="newsletter">
-                <input type="checkbox" id="newsletter-signup" name="newsletter" value="1" title="<?php echo Mage::helper('newsletter')->__('Sign up for our newsletter') ?>" class="checkbox" />
+                <input type="hidden" checked="checked" id="newsletter-signup" name="newsletter" value="1" title="<?php echo Mage::helper('newsletter')->__('Sign up for our newsletter') ?>" class="checkbox" />
                 <label for="newsletter-signup">
                     <?php echo Mage::helper('newsletter')->__('Sign up for our newsletter') ?>
                 </label>
             </p>
         <?php endif; ?>
+        -->
     </div>
 
     <div class="col-3">

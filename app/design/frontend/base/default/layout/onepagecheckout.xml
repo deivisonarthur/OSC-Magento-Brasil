@@ -84,7 +84,9 @@
         </block>
     </onepagecheckout_index_updatecheckout>
 
-    <onepagecheckout_index_success translate="label">
+
+   <!-- Redireciona para o Success e Failure default do Magento - Se remover ele tenta procurar assim onestepcheckout/success.phtml -->
+   <onepagecheckout_index_success translate="label">
         <reference name="root">
             <action method="setTemplate"><template>page/1column.phtml</template></action>
         </reference>
@@ -94,13 +96,15 @@
     </onepagecheckout_index_success>
 
     <onepagecheckout_index_failure translate="label">
-        <reference name="root">                    <!-- page/2columns-right.phtml -->
+        <reference name="root">
             <action method="setTemplate"><template>page/1column.phtml</template></action>
         </reference>
         <reference name="content">
             <block type="checkout/onepage_failure" name="checkout.failure" template="checkout/onepage/failure.phtml"/>
         </reference>
     </onepagecheckout_index_failure>
+
+
     
     <customer_account_create>
         <reference name="customer_form_register">
@@ -116,7 +120,6 @@
 
 
 
-    <!-- Aqui foi foda! -->
 
     <customer_address_form translate="label">
         <reference name="my.account.wrapper">
@@ -125,14 +128,7 @@
     </customer_address_form>
 
 
-<!--
-    <customer_address_index translate="label">
-        <reference name="my.account.wrapper">
-            <block type="customer/address_book" name="address_book" template="onepagecheckout/persistent/customer/address/book.phtml"/>
-        </reference>
-    </customer_address_index>
 
--->
 
 <!--
     <customer_address_form translate="label">
