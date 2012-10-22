@@ -199,9 +199,6 @@ OPC.prototype = {
         }
         checkout.setLoadWaiting(false);
         $('review-please-wait').hide();
-
-
-
         if (response.update_section) {
             for (var i in response.update_section) {
                 ch_obj = $('checkout-' + i + '-load');
@@ -210,17 +207,12 @@ OPC.prototype = {
                         'width': 'auto',
                         'height': 'auto'
                     }).update(response.update_section[i]).setOpacity(1).removeClassName('loading');
-
                     if (i === 'shipping-method') {
                         shippingMethod.addObservers()
                     }
                 }
             }
         }
-
-
-
-
         if (response.duplicateBillingInfo) {
             shipping.syncWithBilling()
         }
@@ -679,7 +671,7 @@ OPC.Window.prototype = {
         $(document.body).insert(this.window)
     },
     _attachEventListeners: function () {
-
+    	
         this.close.observe('click', this.hide.bind(this));
         document.observe('keypress', this._onKeyPress.bind(this));
         if (this.config.triggers) {
@@ -727,8 +719,6 @@ function open_login() {
     }
     return url
 }
-
-
 window.onload = function () {
     checkout.update({
         'payment-method': 1,

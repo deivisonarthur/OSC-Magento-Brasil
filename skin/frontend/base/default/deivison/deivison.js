@@ -35,166 +35,7 @@
 
 
 
-
-
-
         $j(document).ready(function(){
-
-
-
-            $j('input').click( function(){
-                    $j('html head').find('title').text(  "OSC: Finalizando compra no campo [ " + $j(this).attr('title') + " ]"  );
-                    _gaq.push(['_trackPageview', '#' + $j(this).attr('name') + '']);
-            });
-
-            $j(':input').blur( function(){
-                    pageTracker._trackEvent("OSC no campo: ", "input_exit", $j(this).attr('name'));
-            });
-
-
-            /*Limita os campos da data nascimento*/
-            $j('input[name*="day"]').attr('maxlength','2');
-            $j('input[name*="month"]').attr('maxlength','2');
-            $j('input[name*="year"]').attr('maxlength','4');
-            $j('input[name*="postcode"]').attr('maxlength','8');
-
-/*===================================================== Click ===========================================================*/
-            /*Roda o clique para selecionar o tipo pessoa*/
-            $j('input[name*="tipopessoa"]').click( function(){
-
-                var existe;
-
-                /*Pega do click tipo pessoa*/
-                queme = this.value;
-
-                /*Verifica se existe o Taxvat*/
-                existe = $j('input[name*="taxvat"]').length;
-
-                if(queme == 'Fisica'){
-                  /*fisica*/
-
-                    /*Se existe o Taxvat alterna entre eles mudando o name conforme selecionado o tipo pessoa*/
-                    if( existe != ''){
-
-                        /*CADASTRO*/
-                        $j('input[name="taxvat-old"]').attr('name', 'taxvat');
-                        $j('input[name="taxvat"]:eq(1)').attr('name', 'NULL');
-
-                        /*BILLING*/
-                        $j('input[name="billing[taxvat-old]"]').attr('name', 'billing[taxvat]');
-                        $j('input[name="billing[taxvat]"]:eq(1)').attr('name', 'NULL');
-
-                        /*LIMPA CAMPOS*/
-                        $j('input[name="taxvat"]').val('');
-                        $j('input[name="billing[taxvat]"]').val('');
-
-                        /*ADD CLASS TAXVAT*/
-                        $j('input[name*="taxvat"]').attr('class', 'validar_cpfcnpj input-text');
-                    }else{
-                        /*CADASTRO*/
-                        $j('.inputcnpj').attr('name', 'NULL');
-                        $j('.inputcpf').attr('name', 'cpfcnpj');
-
-                        /*BILLING*/
-                        $j('.Binputcnpj').attr('name', "NULL");             /*CNPJ NULL*/
-                        $j('.Binputcpf').attr('name', "billing[cpfcnpj]");  /*CPF OK*/
-                        //$j('.Binputcpf').attr('name', 'oioioi');
-                        /*LIMPA CAMPOS*/
-                        $j('input[name="cpfcnpj"]').val('');
-                        $j('input[name="billing[cpfcnpj]"]').val('');
-                    }
-
-                    /*Exibe ou oculta os boxs*/
-                    $j('.boxpj').hide();
-                    $j('.boxpf').show();
-
-                    /*Exibe ou oculta o entregar em outro endereço conforme a selecao do tipo pessoa*/
-                    $j('li.options').find("label:contains('Entregar')").css('visibility', 'visible');
-                    $j('input[name*="[same_as_billing]"]').css('visibility', 'visible');
-
-                }else if(queme == 'Juridica'){
-                  /*juricica*/
-
-                    /*Se existe o Taxvat alterna entre eles mudando o name conforme selecionado o tipo pessoa*/
-                    if( existe != ''){
-                        /*CADASTRO*/
-                        $j('input[name="taxvat-old"]').attr('name', 'taxvat');
-                        $j('input[name="taxvat"]:eq(0)').attr('name', 'NULL');
-
-                        /*BILLING*/
-                        $j('input[name="billing[taxvat-old]"]').attr('name', 'billing[taxvat]');
-                        $j('input[name="billing[taxvat]"]:eq(0)').attr('name', 'NULL');
-
-                        /*LIMPA CAMPOS*/
-                        $j('input[name="taxvat"]').val('');
-                        $j('input[name="billing[taxvat]"]').val('');
-
-                        /*ADD CLASS TAXVAT*/
-                        $j('input[name*="taxvat"]').attr('class', 'validar_cpfcnpj input-text');
-                    }else{
-                        /*CADASTRO*/
-                        $j('.inputcnpj').attr('name', 'cpfcnpj');
-                        $j('.inputcpf').attr('name', 'NULL');
-
-                        /*BILLING*/
-                        $j('.Binputcnpj').attr('name', 'billing[cpfcnpj]'); /*CNPJ OK*/
-                        $j('.Binputcpf').attr('name', 'NULL');              /*CPF NULL*/
-
-                        /*LIMPA CAMPOS*/
-                        $j('input[name="cpfcnpj"]').val('');
-                        $j('input[name="billing[cpfcnpj]"]').val('');
-                    }
-
-                    /*Exibe ou oculta os boxs*/
-                    $j('.boxpj').show();
-                    $j('.boxpf').hide();
-
-                    /*Exibe ou oculta o entregar em outro endereço conforme a selecao do tipo pessoa*/
-                    $j('li.options').find("label:contains('Entregar')").css('visibility', 'hidden');
-                    $j('input[name*="[same_as_billing]"]').css('visibility', 'hidden');
-                }
-            });
-/*===================================================== End Click ===========================================================*/
-
-
-
-            /*Faz o checkout do IE para isento*/
-            $j('input[name*="isento"]').click( function(){
-
-                if ($j(this).attr('checked')) {
-                    $j('input[name*="ie"]').val("isento");
-                    $j('input[name*="ie"]').css('background', '#DDDDDD');
-                    //$j('input[name*="ie"]').attr('disabled', true);
-                    $j('input[name*="ie"]').attr('readonly', 'readonly');
-                } else {
-                    $j('input[name*="ie"]').val('');
-                    $j('input[name*="ie"]').css('background', '#FFFFFF');
-                    //$j('input[name*="ie"]').removeAttr('disabled');
-                    $j('input[name*="ie"]').removeAttr('readonly');
-                }
-            });
-
-
-
-            /*Botao aguarde*/
-            var erro1;
-            var erro2;
-
-            $j('#review-buttons-container').click( function(){
-                $j(this).attr('class', 'buttons-set disabled');
-                $j('#review-please-wait').show();
-
-                erro1 = $j('.error-msg').length;
-                erro2 = $j('.validation-failed').length;
-
-                //alert(erro1); alert(erro2);
-
-                if(erro1 > 0 || erro2 > 0){
-                    $j(this).attr('class', 'buttons-set');
-                    $j('#review-please-wait').hide();
-                }
-            });
-
 
             //Ao se coloca o "-" no CEP não irá calcular o frete caso use o módulo Matrix Rates, pois ele não trabalha com o "-"
             /*Essa opção é caso queira que toda vez ao se entrar no campo ele limpe-o*/
@@ -203,24 +44,21 @@
             });
 
              /*Script do traço do cep*/
-             /*   mexer
             $j('input[class*="tracoAtivo"]').keydown( function(e){
                   $j(this).attr('maxlength','9');
                   if (e.keyCode >= 9){
-                    //length = this.value.length;
-                    length = $j(this).length;
+                    length = this.value.length;
                     if (length == 5)
-                        //this.value += "-";
-                        $j(this).value += "-";
+                        this.value += "-";
                   }
             });
-            */
-
 
             //$j('input[class*="tracoAtivo"]').mask("99999-999");     apresenta erro e nao calcula o frete
 
 
 
+
+            
             $j('input[name*="telephone"]').focus(function(){
               $j(this).val('');
             });
@@ -424,17 +262,9 @@
                         r = r.substring(++i);
                         region = r.substring(0, (i = r.indexOf(':')));
 
-                        //document.getElementById(quale+':region').selectedIndex = unescape(region.replace(/\+/g," "));
-                        //document.getElementById(quale+':region_id').selectedIndex = unescape(region.replace(/\+/g," "));
+                        document.getElementById(quale+':region').selectedIndex = unescape(region.replace(/\+/g," "));
 
-                        region = region.replace(/\+/g," ");
-
-                        //alert(region);
-                        $j('select[id*="'+quale+':region"]').children("option:contains('"+region+"')").attr('selected', 'selected');
-                        $j('select[id*="'+quale+':region_id"]').children("option:contains('"+region+"')").attr('selected', 'selected');
-
-                        //document.getElementById(quale+':region_id').children("option:contains('"+region+"')").attr('selected', 'selected');
-
+                        document.getElementById(quale+':region_id').selectedIndex = unescape(region.replace(/\+/g," "));
 
 
                         setTimeout(function() { document.getElementById(quale+':street2').focus(); }, 1);
@@ -452,7 +282,7 @@
 
     	// Adicionar classe de validacao de cpf e cnpj ao Taxvat
     	//$j('#billing:taxvat"]').addClassName('validar_cpf'); //removido e colocado na mão
-
+                                                
         function validaCPF(cpf,pType){
         	var cpf_filtrado = "", valor_1 = " ", valor_2 = " ", ch = "";
         	var valido = false;
@@ -525,72 +355,6 @@
 
       	return( (mControle1 * 10) + mControle );
       	}
-
-
-
-
-/*  deivison 02
-    FUNÇÃO QUE EXECUTA PASSO A PASSO DE ATUALIZAÇÃO DOS CAMPOS PAYMENTS E REVIEW
-    -------------------------------------------------------------------------------------------------------------------------------
-    Essa função foi feita para atualização dos valores, caso haja desconto para pagamentos específicos como 10% pagamento no boleto
-    -------------------------------------------------------------------------------------------------------------------------------
-    Métodos de atualiação
-    'payment-method': 1,    <- Atualiza os meios de pagamentos
-    'shipping-method': 1,   <- Atualiza os métodos de envio
-    'review': 1             <- Atualiza o resumo da compra
-*/
-
-//Para atualizar caso tenha desconto no boleto
-$j(function($) {
-      $j('input[name*="payment[method]"]').live('click', function() {
-              checkout.update({
-                    'shipping-method': 1,
-                    'review': 1,
-                    'payment-method': 1
-              });
-
-             setTimeout(function(){
-                        checkout.update({
-                            'review': 1,
-                            'payment-method': 1
-                        });
-             }, 1000);
-
-              $j('html head').find('title').text(  "OSC: Finalizando compra no campo [ " + $j(this).attr('name') + " ]"  );
-              _gaq.push(['_trackPageview', '#' + $j(this).attr('name') + '']);
-              pageTracker._trackEvent("OSC no campo: ", "input_exit", $j(this).attr('name'));
-      });
-
-
-      $j('input[name*="shipping_method"]').live('click', function() {
-              checkout.update({
-                    'shipping-method': 1,
-                    'review': 1,
-                    'payment-method': 1
-              });
-             setTimeout(function(){
-                        checkout.update({
-                            'review': 1,
-                            'payment-method': 1
-                        });
-             }, 500);
-
-              $j('html head').find('title').text(  "OSC: Finalizando compra no campo [ " + $j(this).attr('value') + " ]"  );
-              _gaq.push(['_trackPageview', '#' + $j(this).attr('value') + '']);
-              pageTracker._trackEvent("OSC no campo: ", "input_exit", $j(this).attr('value'));
-      });
-
-
-      $j('#checkout-payment-method-load input').live('click', function() {
-              $j('html head').find('title').text(  "OSC: Finalizando compra no campo [ " + $j(this).attr('name') + " ]"  );
-              _gaq.push(['_trackPageview', '#' + $j(this).attr('name') + '']);
-              pageTracker._trackEvent("OSC no campo: ", "input_exit", $j(this).attr('name'));
-
-      });
-
-
-});
-
 
 
 

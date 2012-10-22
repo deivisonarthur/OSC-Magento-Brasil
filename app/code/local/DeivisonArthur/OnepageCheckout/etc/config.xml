@@ -2,7 +2,7 @@
 <config>
     <modules>
         <DeivisonArthur_OnepageCheckout>
-            <version>4.0.0</version>
+            <version>3.0.2</version>
         </DeivisonArthur_OnepageCheckout>
     </modules>
     <!-- Adicionado -->
@@ -16,7 +16,6 @@
                 <cpfcnpj><billing>1</billing><shipping>1</shipping></cpfcnpj>
                 <celular><billing>1</billing><shipping>1</shipping></celular>
                 <empresa><billing>1</billing><shipping>1</shipping></empresa>
-                <nomefantasia><billing>1</billing><shipping>1</shipping></nomefantasia>
             </customer_dataflow>
         </fieldsets>
     </admin>
@@ -55,7 +54,6 @@
                 <cpfcnpj><to_order>*</to_order></cpfcnpj>
                 <celular><to_order>*</to_order></celular>
                 <empresa><to_order>*</to_order></empresa>
-                <nomefantasia><to_order>*</to_order></nomefantasia>
             </sales_copy_order_billing_address>
             <sales_copy_order_shipping_address>
                 <!-- Adiciona os campos  tipopessoa, rg, ie, cpfcnpj, celular, nomeentrega, rgientrega, cpfentrega, telentrega -->
@@ -65,7 +63,6 @@
                 <cpfcnpj><to_order>*</to_order></cpfcnpj>
                 <celular><to_order>*</to_order></celular>
                 <empresa><to_order>*</to_order></empresa>
-                <nomefantasia><to_order>*</to_order></nomefantasia>
             </sales_copy_order_shipping_address>
             <sales_convert_quote_address>
                 <!-- Adiciona os campos  tipopessoa, rg, ie, cpfcnpj, celular, nomeentrega, rgientrega, cpfentrega, telentrega -->
@@ -75,7 +72,6 @@
                 <cpfcnpj><to_order_address>*</to_order_address><to_customer_address>*</to_customer_address></cpfcnpj>
                 <celular><to_order_address>*</to_order_address><to_customer_address>*</to_customer_address></celular>
                 <empresa><to_order_address>*</to_order_address><to_customer_address>*</to_customer_address></empresa>
-                <nomefantasia><to_order_address>*</to_order_address><to_customer_address>*</to_customer_address></nomefantasia>
             </sales_convert_quote_address>
             <sales_convert_order_address>
                 <!-- Adiciona os campos  tipopessoa, rg, ie, cpfcnpj, celular, nomeentrega, rgientrega, cpfentrega, telentrega -->
@@ -85,7 +81,6 @@
                 <cpfcnpj><to_quote_address>*</to_quote_address></cpfcnpj>
                 <celular><to_quote_address>*</to_quote_address></celular>
                 <empresa><to_quote_address>*</to_quote_address></empresa>
-                <nomefantasia><to_quote_address>*</to_quote_address></nomefantasia>
             </sales_convert_order_address>
             <customer_address>
                 <!-- Adiciona os campos  tipopessoa, rg, ie, cpfcnpj, celular, nomeentrega, rgientrega, cpfentrega, telentrega -->
@@ -95,7 +90,6 @@
                  <cpfcnpj><to_quote_address>*</to_quote_address></cpfcnpj>
                  <celular><to_quote_address>*</to_quote_address></celular>
                  <empresa><to_quote_address>*</to_quote_address></empresa>
-                 <nomefantasia><to_quote_address>*</to_quote_address></nomefantasia>
             </customer_address>
             <checkout_onepage_billing>
                 <!-- Adiciona os campos  tipopessoa, rg, ie, cpfcnpj, celular, nomeentrega, rgientrega, cpfentrega, telentrega -->
@@ -105,7 +99,6 @@
                 <cpfcnpj><to_customer>*</to_customer></cpfcnpj>
                 <celular><to_customer>*</to_customer></celular>
                 <empresa><to_customer>*</to_customer></empresa>
-                <nomefantasia><to_customer>*</to_customer></nomefantasia>
             </checkout_onepage_billing>
         </fieldsets>
         <!-- fim -->
@@ -204,7 +197,7 @@
             <modules>
                 <IWD_OnepageCheckout>
                     <files>
-                        <default>DeivisonArthur_OnepageCheckout.csv</default>
+                        <default>IWD_OnepageCheckout.csv</default>
                     </files>
                 </IWD_OnepageCheckout>
             </modules>
@@ -244,13 +237,11 @@
                 <payment_method>authorizenet</payment_method>
                 <country>BR</country>
                 <habilitarcad>1</habilitarcad>
-                <guest_checkout>0</guest_checkout>
-                <!--
+                <guest_checkout>1</guest_checkout>
                 <guest_checkout1>0</guest_checkout1>
                 <guest_checkout2>1</guest_checkout2>
                 <shipping_address>1</shipping_address>
                 <newsletter_checkbox>1</newsletter_checkbox>
-                -->
                 <comment>0</comment>
             </general>
 
@@ -261,8 +252,7 @@
                 <tipopessoa>required</tipopessoa>
                 <ie>required</ie>
                 <rgi>required</rgi>
-                <empresa>required</empresa>
-                <nomefantasia>required</nomefantasia>
+                <company>required</company>
                 <address>required</address>
                 <address2>required</address2>
                 <address3>optional</address3>
@@ -282,8 +272,7 @@
                 <cpfcnpjregistro>required</cpfcnpjregistro>
                 <tipopessoaregistro>required</tipopessoaregistro>
                 <ieregistro>required</ieregistro>
-                <empresaregistro>required</empresaregistro>
-                <nomefantasiaregistro>required</nomefantasiaregistro>
+                <companyregistro>required</companyregistro>
                 <rgiregistro>required</rgiregistro>
                 <rgientrega>required</rgientrega>
                 <cpfentrega>required</cpfentrega>
@@ -295,9 +284,9 @@
 
             <geo_ip>
                 <country>0</country>
-                <country_file></country_file>
+                <country_file>GeoIP.dat</country_file>
                 <city>0</city>
-                <city_file></city_file>
+                <city_file>GeoLiteCity.dat</city_file>
             </geo_ip>
         </onepagecheckout>
     </default>
@@ -306,7 +295,7 @@
             <onepagecheckout>
                 <use>admin</use>
                 <args>
-                    <module>DeivisonArthur_OnepageCheckout</module>
+                    <module>IWD_OnepageCheckout</module>
                     <frontName>onepagecheckout</frontName>
                 </args>
             </onepagecheckout>

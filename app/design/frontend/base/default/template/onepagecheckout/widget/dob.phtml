@@ -1,39 +1,37 @@
 <label for="<?php echo $this->getFieldId('month')?>"<?php if ($this->isRequired()) echo ' class="required"' ?>>
 	<?php echo $this->__('Date of Birth') ?>
 </label>
-<?php echo '<sup>*</sup>' ?>
-<div style="height: 39px !important;">
-<div class="clr"></div>
+<?php if ($this->isRequired()) echo '<sup>*</sup>' ?>
+<div class="data_area customer-dob">
 <?php
     $this->setDateInput('d',
-        '<div class="short dob-day" style="height: 39px !important; width: 25px !important; display: block !important; margin-bottom; 0px; margin-right: 10px">
-             <input type="text" style="margin-bottom; 0px" id="' . $this->getFieldId('day') . '" name="' . $this->getFieldName('day') . '" value="' . $this->getDay() . '" title="' . $this->__('Day') . '" class="t1 input-text validate-custom" ' . $this->getFieldParams() . ' />
+        '<div class="dob-day">
+             <input type="text" id="' . $this->getFieldId('day') . '" name="' . $this->getFieldName('day') . '" value="' . $this->getDay() . '" title="' . $this->__('Day') . '" class="t1 validate-custom" ' . $this->getFieldParams() . ' />
              <label for="' . $this->getFieldId('day') . '">' . $this->__('DD') . '</label>
          </div>'
     );
 
     $this->setDateInput('m',
-        '<div class="short dob-month" style="height: 39px !important; width: 25px !important; display: block; float: left !important; margin-bottom; 0px; margin-right: 10px">
-             <input type="text" style="margin-bottom; 0px" id="' . $this->getFieldId('month') . '" name="' . $this->getFieldName('month') . '" value="' . $this->getMonth()  . '" title="' . $this->__('Month')  . '" class="t1 input-text validate-custom" ' . $this->getFieldParams()  . ' />
+        '<div class="dob-month">
+             <input type="text" id="' . $this->getFieldId('month') . '" name="' . $this->getFieldName('month') . '" value="' . $this->getMonth()  . '" title="' . $this->__('Month')  . '" class="t1 validate-custom" ' . $this->getFieldParams()  . ' />
              <label for="' . $this->getFieldId('month') . '">' . $this->__('MM')  . '</label>
          </div>'
     );
 
     $this->setDateInput('y',
-        '<div class="short dob-year" style="height: 39px !important; width: 40px !important; display: block; float: left !important; margin-bottom; 0px">
-             <input type="text" style="margin-bottom; 0px" id="' . $this->getFieldId('year') . '" name="' . $this->getFieldName('year') . '" value="' . $this->getYear()  . '" title="' . $this->__('Year')  . '" class="t1 input-text validate-custom" ' . $this->getFieldParams()  . ' />
+        '<div class="dob-year">
+             <input type="text" id="' . $this->getFieldId('year') . '" name="' . $this->getFieldName('year') . '" value="' . $this->getYear()  . '" title="' . $this->__('Year')  . '" class="t1 validate-custom" ' . $this->getFieldParams()  . ' />
              <label for="' . $this->getFieldId('year') . '">' . $this->__('YYYY')  . '</label>
          </div>'
     );
 
-    echo $this->getSortedDateInputs()
+    echo $this->getSortedDateInputs() 
 ?>
-
     <div class="dob-full" style="display:none;">
-        <input type="hidden" id="dob" name="dob">
+        <input type="hidden" id="<?php echo $this->getFieldId('dob')?>" name="<?php echo $this->getFieldName('dob')?>" />
     </div>
 
-    <div class="validation-advice" style="display:none;">Este é um campo obrigatório.</div>
+    <div class="validation-advice" style="display:none;"></div>
 </div>
 <script type="text/javascript">
 //<![CDATA[
