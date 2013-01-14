@@ -430,6 +430,21 @@ Payment.prototype = {
             (init.value)()
         })
     },
+    addObservers: function () {
+        $$('input[name="payment[method]"]').each(function (el) {
+            el.observe('click', function () {
+                checkout.update({
+                    'payment-method': 1
+                });
+
+                setTimeout(function(){
+                    checkout.update({
+                    'review': 1
+                    });
+                }, 1000);
+            })
+        })
+    },
     init: function () {
         this.beforeInit();
         var method = null;
@@ -461,6 +476,9 @@ Payment.prototype = {
             elements[i].setAttribute('autocomplete', 'off')
         }
         if (method) this.switchMethod(method);
+        
+        this.addObservers();
+       
         this.afterInit();
         this.initWhatIsCvvListeners()
     },
