@@ -1,9 +1,9 @@
 <?php
 /*=========================================================================================================================================================
  *
- *  PROJETO OSC MAGENTO BRASIL - VERSÃO FINAL V3.0
+ *  PROJETO OSC MAGENTO BRASIL - VERSÃƒO FINAL V3.0
  *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
- *  O módulo One Step Checkout normatizado para a localização brasileira.
+ *  O mÃ³dulo One Step Checkout normatizado para a localizaÃ§Ã£o brasileira.
  *  site do projeto: http://onestepcheckout.com.br/
  *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *
@@ -24,11 +24,11 @@
  *
  *
  *
- *  GOSTOU DO MÓDULO?
+ *  GOSTOU DO MÃ“DULO?
  *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
- *  Se você gostou, se foi útil para você, se fez você economizar aquela grana pois estava prestes a pagar caro por aquele módulo pago, pois não achava uma
- *  solução gratuita que te atendesse e queira prestigiar o trabalho feito efetuando uma doação de qualquer valor, não vou negar e vou ficar grato! você
- *  pode fazer isso visitando a página do projeto em: http://onestepcheckout.com.br/
+ *  Se vocÃª gostou, se foi Ãºtil para vocÃª, se fez vocÃª economizar aquela grana pois estava prestes a pagar caro por aquele mÃ³dulo pago, pois nÃ£o achava uma
+ *  soluÃ§Ã£o gratuita que te atendesse e queira prestigiar o trabalho feito efetuando uma doaÃ§Ã£o de qualquer valor, nÃ£o vou negar e vou ficar grato! vocÃª
+ *  pode fazer isso visitando a pÃ¡gina do projeto em: http://onestepcheckout.com.br/
  *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *
 /*=========================================================================================================================================================
@@ -404,7 +404,7 @@ $has_addr	= $this->customerHasAddresses();
 
 				$dob	= $this->getLayout()->createBlock('onepagecheckout/widget_dob');
 				$gender	= $this->getLayout()->createBlock('onepagecheckout/widget_gender');
-				$taxvat = $this->getLayout()->createBlock('onepagecheckout/widget_taxvat');
+				//$taxvat = $this->getLayout()->createBlock('onepagecheckout/widget_taxvat');
 
 				if ($dob->isEnabled() || $gender->isEnabled()){ ?>
 					<div class="two_fields">
@@ -427,17 +427,10 @@ $has_addr	= $this->customerHasAddresses();
 				<?php
 				}
 
-				if ($taxvat->isEnabled()){	?>
-					<div class='full'>
-						<?php
-							echo $taxvat->setTaxvat($this->getQuote()->getCustomerTaxvat())->setFieldIdFormat('billing:%s')->setFieldNameFormat('billing[%s]')->toHtml();
-						?>
-					</div>
-				<?php
-				}
+
 				$agc = Mage::helper('onepagecheckout')->isGuestCheckoutAllowed();
                 $habilitarcad = Mage::getStoreConfig('onepagecheckout/general/habilitarcad');
-				if ($habilitarcad)  //$agc ||
+				if ($agc)  //$agc ||
 				{
 				?>
 				<ul>
