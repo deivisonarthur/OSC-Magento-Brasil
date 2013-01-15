@@ -1,8 +1,8 @@
 /*=========================================================================================================================================================
  *
- *  PROJETO OSC MAGENTO BRASIL - VERS√O FINAL V3.0
+ *  PROJETO OSC MAGENTO BRASIL - VERS√ÉO FINAL V3.0
  *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
- *  O mÛdulo One Step Checkout normatizado para a localizaÁ„o brasileira.
+ *  O m√≥dulo One Step Checkout normatizado para a localiza√ß√£o brasileira.
  *  site do projeto: http://onestepcheckout.com.br/
  *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *
@@ -23,11 +23,11 @@
  *
  *
  *
- *  GOSTOU DO M”DULO?
+ *  GOSTOU DO M√ìDULO?
  *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
- *  Se vocÍ gostou, se foi ˙til para vocÍ, se fez vocÍ economizar aquela grana pois estava prestes a pagar caro por aquele mÛdulo pago, pois n„o achava uma
- *  soluÁ„o gratuita que te atendesse e queira prestigiar o trabalho feito efetuando uma doaÁ„o de qualquer valor, n„o vou negar e vou ficar grato! vocÍ
- *  pode fazer isso visitando a p·gina do projeto em: http://onestepcheckout.com.br/
+ *  Se voc√™ gostou, se foi √∫til para voc√™, se fez voc√™ economizar aquela grana pois estava prestes a pagar caro por aquele m√≥dulo pago, pois n√£o achava uma
+ *  solu√ß√£o gratuita que te atendesse e queira prestigiar o trabalho feito efetuando uma doa√ß√£o de qualquer valor, n√£o vou negar e vou ficar grato! voc√™
+ *  pode fazer isso visitando a p√°gina do projeto em: http://onestepcheckout.com.br/
  *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *
 /*=========================================================================================================================================================
@@ -37,13 +37,13 @@
 
         $j(document).ready(function(){
 
-            //Ao se coloca o "-" no CEP n„o ir· calcular o frete caso use o mÛdulo Matrix Rates, pois ele n„o trabalha com o "-"
-            /*Essa opÁ„o È caso queira que toda vez ao se entrar no campo ele limpe-o*/
+            //Ao se coloca o "-" no CEP n√£o ir√° calcular o frete caso use o m√≥dulo Matrix Rates, pois ele n√£o trabalha com o "-"
+            /*Essa op√ß√£o √© caso queira que toda vez ao se entrar no campo ele limpe-o*/
             $j('input[class*="tracoAtivo"]').focus(function(){
               $j(this).val('');
             });
 
-             /*Script do traÁo do cep*/
+             /*Script do tra√ßo do cep*/
             $j('input[class*="tracoAtivo"]').keydown( function(e){
                   $j(this).attr('maxlength','9');
                   if (e.keyCode >= 9){
@@ -58,12 +58,18 @@
 
 
 
-            
-            $j('input[name*="telephone"]').focus(function(){
+
+
+            //Limpa dados ao entrar Tel e Cel ==========================
+            $j('input[name*="[telephone]"],input[name*="[fax]"],input[name*="[telefone]"]').focus(function(){
               $j(this).val('');
             });
+            //Fim =======================================================
 
-            $j('input[name*="telephone"]').keypress( function(e){
+
+
+            //Formata campos Tel e Cel ==================================
+            $j('input[name*="[telephone]"],input[name*="[fax]"],input[name*="[telefone]"]').keydown( function(e){
                 if (e.keyCode >= 9){
                     length = this.value.length;
                     if (length == 0)
@@ -71,10 +77,7 @@
 
                     if (length == 3)
                       this.value += ")";
-                    /*
-                    Testa para ver se o ddd comeÁa com 11 e coloca maxlength para 14
-                            exemplo: (11)95345-1234 que antes era assim (11)5345-1234
-                    */
+
                     if(/(\(11\)9(5[0-9]|6[0-9]|7[01234569]|8[0-9]|9[0-9])).+/i.test(this.value)){
                         $j(this).attr('maxlength','14');
                         if (length == 9)
@@ -86,63 +89,52 @@
                     }
                 }
             });
+            //Fim =======================================================
 
 
-            $j('input[name*="fax"]').focus(function(){
-              $j(this).val('');
-            });
 
-            $j('input[name*="fax"]').keypress( function(e){
-                if (e.keyCode >= 9){
-                    length = this.value.length;
-                    if (length == 0)
-                      this.value += "(";
-
-                    if (length == 3)
-                      this.value += ")";
-                    /*
-                    Testa para ver se o ddd comeÁa com 11 e coloca maxlength para 14
-                            exemplo: (11)95345-1234 que antes era assim (11)5345-1234
-                    */
-                    if(/(\(11\)9(5[0-9]|6[0-9]|7[01234569]|8[0-9]|9[0-9])).+/i.test(this.value)){
-                        $j(this).attr('maxlength','14');
-                        if (length == 9)
-                          this.value += "-";
-                    } else {
-                        $j(this).attr('maxlength','13');
-                        if (length == 8)
-                          this.value += "-";
+            //Verifica se √© TEL SP e Brasil =============================
+            //Fixo 1,2,3,4, 5(5,6,8,9) e 55, 56, 58, 59 s√£o telefones fixos com DDD 11 com 9
+            $j('input[name*="[telephone]"]').blur(function() {
+              if(this.value.length > 0){
+                    if(  /\(?[1-9]{2}\)?9?(1[0-9]|2[0-9]|3[0-9]|4[0-9]|5[5,6,8,9])\d{2,3}-?\d{4}/.test(this.value)  ){
+                        //alert('FIXO - Brasil e Sao Paulo');
+                    }else{
+                        $j(this).val('');
+                        alert('O n&ucirc;lmero informado n&atilde;o &eacute; um n&ucirc;lmero de telefone v&aacute;lido!');
                     }
-                }
+              };
             });
+            //Fim =======================================================
 
-            $j('input[name*="celular"]').focus(function(){
-              $j(this).val('');
-            });
 
-            $j('input[name*="celular"]').keypress( function(e){
-                if (e.keyCode >= 9){
-                    length = this.value.length;
-                    if (length == 0)
-                      this.value += "(";
-
-                    if (length == 3)
-                      this.value += ")";
-                    /*
-                    Testa para ver se o ddd comeÁa com 11 e coloca maxlength para 14
-                            exemplo: (11)95345-1234 que antes era assim (11)5345-1234
-                    */
-                    if(/(\(11\)9(5[0-9]|6[0-9]|7[01234569]|8[0-9]|9[0-9])).+/i.test(this.value)){
-                        $j(this).attr('maxlength','14');
-                        if (length == 9)
-                          this.value += "-";
-                    } else {
-                        $j(this).attr('maxlength','13');
-                        if (length == 8)
-                          this.value += "-";
+            //Verifica se √© CEL SP e Brasil =============================
+            //Celular 5,6,7,8,9 e 51, 52, 53, 57 s√£o celular DDD 11
+            $j('input[name*="[fax],input[name*="[celular]"]"]').blur(function() {
+              if(this.value.length > 0){
+                    if(  /\(?[1-9]{2}\)?9?(9[0-9]|8[0-9]|7[0-9]|6[0-9]|95[1,2,3,7])\d{2,3}-?\d{4}/.test(this.value)  ){
+                        //alert('CEL - Brasil e Sao Paulo');
+                    }else{
+                        $j(this).val('');
+                        alert('O n&ucirc;lmero informado n&atilde;o &eacute; um n&ucirc;lmero de celular v&aacute;lido!');
                     }
-                }
+              };
             });
+            //Fim =======================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             $j('input[name*="taxvat"]').blur( function(){
 
@@ -150,33 +142,33 @@
 
                 //para testar cnpj: 78.425.986/0036-15 ou 78425986003615
 
-                //Remove tudo o que n„o È dÌgito
+                //Remove tudo o que n√£o √© d√≠gito
                 v = v.replace(/\D/g,"");
 
                 if (v.length <= 11) { //CPF
 
-                    //Coloca um ponto entre o terceiro e o quarto dÌgitos
+                    //Coloca um ponto entre o terceiro e o quarto d√≠gitos
                     v=v.replace(/(\d{3})(\d)/,"$1.$2");
 
-                    //Coloca um ponto entre o terceiro e o quarto dÌgitos
-                    //de novo (para o segundo bloco de n˙meros)
+                    //Coloca um ponto entre o terceiro e o quarto d√≠gitos
+                    //de novo (para o segundo bloco de n√∫meros)
                     v=v.replace(/(\d{3})(\d)/,"$1.$2");
 
-                    //Coloca um hÌfen entre o terceiro e o quarto dÌgitos
+                    //Coloca um h√≠fen entre o terceiro e o quarto d√≠gitos
                     v=v.replace(/(\d{3})(\d{1,2})$/,"$1-$2");
 
                 } else { //CNPJ
 
-                    //Coloca ponto entre o segundo e o terceiro dÌgitos
+                    //Coloca ponto entre o segundo e o terceiro d√≠gitos
                     v=v.replace(/^(\d{2})(\d)/,"$1.$2");
 
-                    //Coloca ponto entre o quinto e o sexto dÌgitos
+                    //Coloca ponto entre o quinto e o sexto d√≠gitos
                     v=v.replace(/^(\d{2})\.(\d{3})(\d)/,"$1.$2.$3");
 
-                    //Coloca uma barra entre o oitavo e o nono dÌgitos
+                    //Coloca uma barra entre o oitavo e o nono d√≠gitos
                     v=v.replace(/\.(\d{3})(\d)/,".$1/$2");
 
-                    //Coloca um hÌfen depois do bloco de quatro dÌgitos
+                    //Coloca um h√≠fen depois do bloco de quatro d√≠gitos
                     v=v.replace(/(\d{4})(\d)/,"$1-$2");
                 }
 
@@ -191,33 +183,33 @@
 
                 //para testar cnpj: 78.425.986/0036-15 ou 78425986003615
 
-                //Remove tudo o que n„o È dÌgito
+                //Remove tudo o que n√£o √© d√≠gito
                 v = v.replace(/\D/g,"");
 
                 if (v.length <= 11) { //CPF
 
-                    //Coloca um ponto entre o terceiro e o quarto dÌgitos
+                    //Coloca um ponto entre o terceiro e o quarto d√≠gitos
                     v=v.replace(/(\d{3})(\d)/,"$1.$2");
 
-                    //Coloca um ponto entre o terceiro e o quarto dÌgitos
-                    //de novo (para o segundo bloco de n˙meros)
+                    //Coloca um ponto entre o terceiro e o quarto d√≠gitos
+                    //de novo (para o segundo bloco de n√∫meros)
                     v=v.replace(/(\d{3})(\d)/,"$1.$2");
 
-                    //Coloca um hÌfen entre o terceiro e o quarto dÌgitos
+                    //Coloca um h√≠fen entre o terceiro e o quarto d√≠gitos
                     v=v.replace(/(\d{3})(\d{1,2})$/,"$1-$2");
 
                 } else { //CNPJ
 
-                    //Coloca ponto entre o segundo e o terceiro dÌgitos
+                    //Coloca ponto entre o segundo e o terceiro d√≠gitos
                     v=v.replace(/^(\d{2})(\d)/,"$1.$2");
 
-                    //Coloca ponto entre o quinto e o sexto dÌgitos
+                    //Coloca ponto entre o quinto e o sexto d√≠gitos
                     v=v.replace(/^(\d{2})\.(\d{3})(\d)/,"$1.$2.$3");
 
-                    //Coloca uma barra entre o oitavo e o nono dÌgitos
+                    //Coloca uma barra entre o oitavo e o nono d√≠gitos
                     v=v.replace(/\.(\d{3})(\d)/,".$1/$2");
 
-                    //Coloca um hÌfen depois do bloco de quatro dÌgitos
+                    //Coloca um h√≠fen depois do bloco de quatro d√≠gitos
                     v=v.replace(/(\d{4})(\d)/,"$1-$2");
                 }
 
@@ -239,7 +231,7 @@
         function buscarEndereco(host, quale) {
 
 
-    			$j.ajax({
+            		$j.ajax({
     				url: host + 'frontend/base/default/deivison/buscacep.php?cep=' + document.getElementById(quale+':postcode').value.replace(/\+/g, ''),
     				type:'GET',
     				dataType: 'html',
@@ -281,7 +273,7 @@
         /********************* Valida CPF e CNPJ *********************/
 
     	// Adicionar classe de validacao de cpf e cnpj ao Taxvat
-    	//$j('#billing:taxvat"]').addClassName('validar_cpf'); //removido e colocado na m„o
+    	//$j('#billing:taxvat"]').addClassName('validar_cpf'); //removido e colocado na m√£o
                                                 
         function validaCPF(cpf,pType){
         	var cpf_filtrado = "", valor_1 = " ", valor_2 = " ", ch = "";
