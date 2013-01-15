@@ -61,7 +61,7 @@
 
 
             //Limpa dados ao entrar Tel e Cel ==========================
-            $j('input[name*="[telephone]"],input[name*="[fax]"],input[name*="[telefone]"]').focus(function(){
+            $j('input[name*="[telephone]"],input[name*="[fax]"],input[name*="[celular]"]').focus(function(){
               $j(this).val('');
             });
             //Fim =======================================================
@@ -69,7 +69,7 @@
 
 
             //Formata campos Tel e Cel ==================================
-            $j('input[name*="[telephone]"],input[name*="[fax]"],input[name*="[telefone]"]').keydown( function(e){
+            $j('input[name*="[telephone]"],input[name*="[fax]"],input[name*="[celular]"]').keydown( function(e){
                 if (e.keyCode >= 9){
                     length = this.value.length;
                     if (length == 0)
@@ -97,11 +97,12 @@
             //Fixo 1,2,3,4, 5(5,6,8,9) e 55, 56, 58, 59 são telefones fixos com DDD 11 com 9
             $j('input[name*="[telephone]"]').blur(function() {
               if(this.value.length > 0){
-                    if(  /\(?[1-9]{2}\)?9?(1[0-9]|2[0-9]|3[0-9]|4[0-9]|5[5,6,8,9])\d{2,3}-?\d{4}/.test(this.value)  ){
+                    if(  /\(?[1-9]{2}\)?9?(1[0-9]|2[0-9]|3[0-9]|4[0-9]|5[5,6,8,9])\d{2}-?\d{4}/.test(this.value)  ){
                         //alert('FIXO - Brasil e Sao Paulo');
                     }else{
                         $j(this).val('');
-                        alert('O n&ucirc;lmero informado n&atilde;o &eacute; um n&ucirc;lmero de telefone v&aacute;lido!');
+                        //alert('O n&uacute;mero informado n&atilde;o &eacute; um n&uacute;mero de telefone v&aacute;lido!');
+                        alert('Telefone fixo invalido!');
                     }
               };
             });
@@ -110,13 +111,14 @@
 
             //Verifica se é CEL SP e Brasil =============================
             //Celular 5,6,7,8,9 e 51, 52, 53, 57 são celular DDD 11
-            $j('input[name*="[fax],input[name*="[celular]"]"]').blur(function() {
+            $j('input[name*="[fax]"],input[name*="[celular]"]').blur(function() {
               if(this.value.length > 0){
-                    if(  /\(?[1-9]{2}\)?9?(9[0-9]|8[0-9]|7[0-9]|6[0-9]|95[1,2,3,7])\d{2,3}-?\d{4}/.test(this.value)  ){
+                    if(  /\(?[1-9]{2}\)?9?(9[0-9]|8[0-9]|7[0-9]|6[0-9]|5[1,2,3,7])\d{2}-?\d{4}/.test(this.value)  ){
                         //alert('CEL - Brasil e Sao Paulo');
                     }else{
                         $j(this).val('');
-                        alert('O n&ucirc;lmero informado n&atilde;o &eacute; um n&ucirc;lmero de celular v&aacute;lido!');
+                        //alert('O n&uacute;mero informado n&atilde;o &eacute; um n&uacute;mero de celular v&aacute;lido!');
+                        alert('Celular invalido!');
                     }
               };
             });
@@ -274,7 +276,7 @@
 
     	// Adicionar classe de validacao de cpf e cnpj ao Taxvat
     	//$j('#billing:taxvat"]').addClassName('validar_cpf'); //removido e colocado na mão
-                                                
+
         function validaCPF(cpf,pType){
         	var cpf_filtrado = "", valor_1 = " ", valor_2 = " ", ch = "";
         	var valido = false;
