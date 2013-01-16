@@ -5,21 +5,21 @@
 <div class="data_area customer-dob">
 <?php
     $this->setDateInput('d',
-        '<div class="dob" style="width: 20px; float: left; margin-right: 15px;">
+        '<div class="dob-day" style="width: 20px; float: left; margin-right: 15px;">
              <input maxlength="2" style="width: 20px;" type="text" id="' . $this->getFieldId('day') . '" name="' . $this->getFieldName('day') . '" value="' . $this->getDay() . '" title="' . $this->__('Day') . '" class="t1 validate-custom" ' . $this->getFieldParams() . ' />
              <label for="' . $this->getFieldId('day') . '">' . $this->__('Dia') . '</label>
          </div>'
     );
 
     $this->setDateInput('m',
-        '<div class="dob" style="width: 20px; float: left; margin-right: 15px;">
+        '<div class="dob-month" style="width: 20px; float: left; margin-right: 15px;">
              <input maxlength="2" style="width: 20px;" type="text" id="' . $this->getFieldId('month') . '" name="' . $this->getFieldName('month') . '" value="' . $this->getMonth()  . '" title="' . $this->__('Month')  . '" class="t1 validate-custom" ' . $this->getFieldParams()  . ' />
              <label for="' . $this->getFieldId('month') . '">' . $this->__('M&ecirc;s')  . '</label>
          </div>'
     );
 
     $this->setDateInput('y',
-        '<div class="dob" style="width: 45px; float: left">
+        '<div class="dob-year" style="width: 45px; float: left">
              <input maxlength="4" style="width: 45px;" type="text" id="' . $this->getFieldId('year') . '" name="' . $this->getFieldName('year') . '" value="' . $this->getYear()  . '" title="' . $this->__('Year')  . '" class="t1 validate-custom" ' . $this->getFieldParams()  . ' />
              <label for="' . $this->getFieldId('year') . '">' . $this->__('Ano')  . '</label>
          </div>'
