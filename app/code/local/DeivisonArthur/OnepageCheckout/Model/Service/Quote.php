@@ -25,6 +25,8 @@ class DeivisonArthur_OnepageCheckout_Model_Service_Quote extends Mage_Sales_Mode
         if (!($this->getQuote()->getPayment()->getMethod()))
 			Mage::throwException($helper->__('Please select a valid payment method.'));
 
+	// Ajuste para limpar o carrinho apos a finalização da compra.
+	$this->_shouldInactivateQuote = true;
         return $this;
     }
 }
