@@ -39,9 +39,10 @@
 
             //Ao se coloca o "-" no CEP não irá calcular o frete caso use o módulo Matrix Rates, pois ele não trabalha com o "-"
             /*Essa opção é caso queira que toda vez ao se entrar no campo ele limpe-o*/
-            $j('input[class*="tracoAtivo"]').focus(function(){
-              $j(this).val('');
-            });
+
+            //$j('input[class*="tracoAtivo"]').focus(function(){
+            //  $j(this).val('');
+            //});
 
              /*Script do traço do cep*/
             $j('input[class*="tracoAtivo"]').keydown( function(e){
