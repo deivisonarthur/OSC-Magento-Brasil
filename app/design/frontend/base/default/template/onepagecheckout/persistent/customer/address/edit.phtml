@@ -1,9 +1,9 @@
 <?php
 /*=========================================================================================================================================================
  *
- *  PROJETO OSC MAGENTO BRASIL - VERSÃO FINAL V3.0
+ *  PROJETO OSC MAGENTO BRASIL - VERSï¿½O FINAL V3.0
  *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
- *  O módulo One Step Checkout normatizado para a localização brasileira.
+ *  O mï¿½dulo One Step Checkout normatizado para a localizaï¿½ï¿½o brasileira.
  *  site do projeto: http://onestepcheckout.com.br/
  *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *
@@ -24,11 +24,11 @@
  *
  *
  *
- *  GOSTOU DO MÓDULO?
+ *  GOSTOU DO Mï¿½DULO?
  *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
- *  Se você gostou, se foi útil para você, se fez você economizar aquela grana pois estava prestes a pagar caro por aquele módulo pago, pois não achava uma
- *  solução gratuita que te atendesse e queira prestigiar o trabalho feito efetuando uma doação de qualquer valor, não vou negar e vou ficar grato! você
- *  pode fazer isso visitando a página do projeto em: http://onestepcheckout.com.br/
+ *  Se vocï¿½ gostou, se foi ï¿½til para vocï¿½, se fez vocï¿½ economizar aquela grana pois estava prestes a pagar caro por aquele mï¿½dulo pago, pois nï¿½o achava uma
+ *  soluï¿½ï¿½o gratuita que te atendesse e queira prestigiar o trabalho feito efetuando uma doaï¿½ï¿½o de qualquer valor, nï¿½o vou negar e vou ficar grato! vocï¿½
+ *  pode fazer isso visitando a pï¿½gina do projeto em: http://onestepcheckout.com.br/
  *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *
 /*=========================================================================================================================================================
@@ -144,10 +144,10 @@ if ($jquery !== '0') :
                     <label for="tipopessoa" <?php if ( $tipopessoa  === 'required' ){ echo 'class="required"'; }?> > <?php if ( $tipopessoa  === 'required' ){ echo '<em>*</em>'; }?>  <?php echo $this->__('Tipo Pessoa') ?></label>
                     <div class="input-box">
                         <select name="tipopessoa" id="tipopessoa" <?php if ( $tipopessoa  === 'required' ){ echo 'class="required"'; }?> >
-                                 <option value=''>Escolha a opcao</option>
-                                 <option value='Fisica'>Fisica</option>
-                                 <option value='Juridica'>Juridica</option>
-                                 <option value='Outros'>Outros</option>
+							<option value=''><?php echo $this->__('Escolha a opcao'); ?></option>
+							<option value='Fisica'><?php echo $this->__('Fisica'); ?></option>
+							<option value='Juridica'><?php echo $this->__('Juridica'); ?></option>
+							<option value='Outros'><?php echo $this->__('Outros'); ?></option>
                         </select>
                         <script type="text/javascript">
 						//<![CDATA[

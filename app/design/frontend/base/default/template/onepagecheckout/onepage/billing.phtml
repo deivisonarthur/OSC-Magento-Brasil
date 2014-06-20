@@ -111,10 +111,10 @@ $has_addr	= $this->customerHasAddresses();
 					<?php if($tipopessoa === 'required') { echo ' <sup>*</sup> ';}?>
 					<div class="data_area">
                         <select name="billing[tipopessoa]" id="tipopessoa" class="input-text t1<?php if($tipopessoa === 'required'){ echo ' required-entry';} ?>" >
-                                 <option value=''>Escolha a opcao</option>
-                                 <option value='Fisica'>Fisica</option>
-                                 <option value='Juridica'>Juridica</option>
-                                 <option value='Outros'>Outros</option>
+							<option value=''><?php echo $this->__('Escolha a opcao'); ?></option>
+							<option value='Fisica'><?php echo $this->__('Fisica'); ?></option>
+							<option value='Juridica'><?php echo $this->__('Juridica'); ?></option>
+							<option value='Outros'><?php echo $this->__('Outros'); ?></option>
                         </select>
                         <script type="text/javascript">
 						//<![CDATA[
