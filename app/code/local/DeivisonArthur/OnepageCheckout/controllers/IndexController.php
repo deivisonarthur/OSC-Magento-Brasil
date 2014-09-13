@@ -394,7 +394,49 @@ class DeivisonArthur_OnepageCheckout_IndexController extends Mage_Checkout_Contr
 
         $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($result));
     }
-
+	
+    public function checkemailAction()
+	{	
+    	$session = Mage::getSingleton('customer/session');
+    	
+    	if ($this->_expireAjax() || $session->isLoggedIn()) {
+    		return;
+    	}
+    	
+    	$email = $this->getRequest()->getPost('email');
+    	$result = array('success' => false);
+    	
+    	if (!$email)
+    	{
+    		$result['error'] = Mage::helper('customer')->__('Please enter your email.');
+    	}
+    	else
+    	{
+    		if (!Zend_Validate::is($email, 'EmailAddress'))
+    		{
+    			$result['error'] = Mage::helper('checkout')->__('Invalid email address "%s"',$email);
+    		}
+    		else
+    		{
+    			$customer = Mage::getModel('customer/customer')->setWebsiteId(Mage::app()->getStore()->getWebsiteId())->loadByEmail($email);
+    			if(!$customer->getId())
+    			{	
+    				//Not Found
+    				$result['success'] = false;	
+    			}
+    			else
+    			{
+    				$result['success'] = true;
+    				$result['message'] = Mage::helper('checkout')->__('There is already a customer registered using this email address. Please login using this email address or enter a different email address to register your account.');
+    				    			}
+    		}
+    	}
+    	
+    	$this->getResponse()->setBody(Mage::helper('core')->jsonEncode($result));
+      
+    
+    }
+    
     public function loginAction()
     {
         $session = Mage::getSingleton('customer/session');
