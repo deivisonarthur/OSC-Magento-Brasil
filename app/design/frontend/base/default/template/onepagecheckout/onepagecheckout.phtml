@@ -50,6 +50,7 @@ if($seq_http)
 ?>
 <script type="text/javascript">
 	var http_type	= '<?php if($seq_http){echo 'https';}else{echo 'http';}?>';
+	var checkemail_url = '<?php echo $checkemail_url; ?>';
 </script>
 <script type="text/javascript" src="<?php echo $this->getSkinUrl('js/onepagecheckout.js') ?>"></script>
 
