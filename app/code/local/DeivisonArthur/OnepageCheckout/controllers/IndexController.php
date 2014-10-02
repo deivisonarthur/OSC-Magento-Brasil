@@ -142,7 +142,10 @@ class DeivisonArthur_OnepageCheckout_IndexController extends Mage_Checkout_Contr
             $this->_redirect('checkout/cart');
             return;
         }
-
+		
+        $session->getQuote()->setIsActive(false);
+        $session->getQuote()->delete();
+        
         $session->clear();
         $this->loadLayout();
         $this->_initLayoutMessages('checkout/session');
