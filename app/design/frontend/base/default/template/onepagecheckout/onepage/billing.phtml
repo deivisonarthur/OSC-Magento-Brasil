@@ -65,26 +65,22 @@ $has_addr	= $this->customerHasAddresses();
             <?php if (!$logged)  : ?>
             <?php endif; ?>
 
-                                                                                                                <!-- getBillAddress -->
-			<div class="two_fields">
-				<?php echo $this->getLayout()->createBlock('onepagecheckout/widget_name')->setObject($this->getCustomer())->setFieldIdFormat('billing:%s')->setFieldNameFormat('billing[%s]')->toHtml() ?>
-			</div>
-			<div class='clr'></div>
-
-
-
-				<div class="full">
+            <div class="full">
 					<label for="billing:email" class="required">
 						<?php echo $this->__('Email Address') ?>
 					</label>
 					<sup>*</sup>
 					<div class="data_area">
-						<input type="text" name="billing[email]" value="<?php echo $this->htmlEscape($this->getCustomer()->getEmail()) ?>" title="<?php echo $this->__('Email Address') ?>" class="t1 validate-email required-entry" />
+						<input type="text" id="billing:email" name="billing[email]" value="<?php echo $this->htmlEscape($this->getCustomer()->getEmail()) ?>" title="<?php echo $this->__('Email Address') ?>" class="t1 validate-email required-entry" />
 					</div>
-				</div>
-
-
-
+				</div>  
+                          
+            <div class='clr'></div>
+                                                                                                                <!-- getBillAddress -->
+			<div class="two_fields">
+				<?php echo $this->getLayout()->createBlock('onepagecheckout/widget_name')->setObject($this->getCustomer())->setFieldIdFormat('billing:%s')->setFieldNameFormat('billing[%s]')->toHtml() ?>
+			</div>
+			
             <!--empresa-->
             <?php
 			$company = Mage::getStoreConfig('onepagecheckout/address_form/company');

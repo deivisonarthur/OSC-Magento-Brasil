@@ -67,7 +67,22 @@ OPC.prototype = {
                     }
                 }
             })
-        })
+        });
+        
+        $('billing:email') && $('billing:email').observe('blur', function () {
+        	new Ajax.Request(checkemail_url, {
+                parameters: {email: $('billing:email').value},
+                onSuccess: function (transport) {
+                    var response = transport.responseText.evalJSON();
+                    if (response.success) {
+                       alert(response.message); 
+                       open_login();
+                       $('login-form').email.value = $('billing:email').value;
+                       $('login-form').pass.focus();
+                    }
+                }
+            })
+        });
     },
     ajaxFailure: function () {
         location.href = this.failureUrl

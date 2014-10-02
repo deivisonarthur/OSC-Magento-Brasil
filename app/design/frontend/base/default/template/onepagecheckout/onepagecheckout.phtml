@@ -43,10 +43,14 @@
 
 <?php
 $seq_http	= (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS']==='on');
-  
+
+$checkemail_url	= $this->getUrl('*/*/checkemail', array('_secure'=>(!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS']==='on')));
+if($seq_http)
+	$checkemail_url	= str_replace('http:', 'https:', $checkemail_url);
 ?>
 <script type="text/javascript">
 	var http_type	= '<?php if($seq_http){echo 'https';}else{echo 'http';}?>';
+	var checkemail_url = '<?php echo $checkemail_url; ?>';
 </script>
 <script type="text/javascript" src="<?php echo $this->getSkinUrl('js/onepagecheckout.js') ?>"></script>
 
